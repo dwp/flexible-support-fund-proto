@@ -1,0 +1,53 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("claims-overview") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">Reference JDJ2123F</span>
+            <h1 class="govuk-heading-l">Release payment</h1>
+            <p>Confirm supplier payment details to update the status of the claim.</p>
+
+            {{ govukTaskList({
+
+            items: [
+                {
+                title: {
+                    text: "Argos"
+                },
+                href: "#",
+                status: {
+                    text: "Completed"
+                }
+                },
+                {
+                title: {
+                    text: "Boots"
+                },
+                href: "release",
+                status: {
+                    tag: {
+                    text: "Not started",
+                    classes: "govuk-tag--blue"
+                    }
+                }
+                }
+            ]
+            }) }}
+
+        </div>
+    </div>
+{% endblock %}

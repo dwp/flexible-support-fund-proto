@@ -1,0 +1,56 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/prototypes/cc-iteration-3/add-item/standard-details" method="post" class="govuk-form-group">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['supplier-name'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              Tools and equipment
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="equipment-1" name="equipment" type="radio" value="Work tools">
+              <label class="govuk-label govuk-radios__label" for="equipment-1">
+                Work tools
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="equipment-2" name="equipment" type="radio" value="IT equipment">
+              <label class="govuk-label govuk-radios__label" for="equipment-2">
+                IT equipment
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="equipment-3" name="equipment" type="radio" value="Travel equipment" aria-describedby="equipment-3-hint">
+              <label class="govuk-label govuk-radios__label" for="equipment-3">
+                Travel equipment
+              </label>
+              <div id="equipment-3-hint" class="govuk-hint govuk-radios__hint">
+                Such as electric bike
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

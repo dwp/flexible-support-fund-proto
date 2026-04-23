@@ -1,0 +1,257 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("claims-overview") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-m">Reference XGJ2123F</span>
+            <h1 class="govuk-heading-l">View claim</h1>
+
+            <form>
+
+                {{ govukTag({
+                text: "Rejected",
+                classes:'govuk-tag--red'
+                }) }}
+
+                {{ govukInsetText({
+                    html: "<h3>Reason for rejection</h3> <p>Duplicate claim</p>"
+                    }) }}
+
+                {{ govukSummaryList({
+                    rows: [
+                            {
+                        key: { text: "Location" },
+                        value: { text: "Alnwick" }
+                    },
+                                                {
+                        key: { text: "Cost centre" },
+                        value: { text: "000000" }
+                    }
+                    ,
+                    {
+                        key: { text: "Total cost" },
+                        value: { text: "£102.99" }
+                    },
+                    {
+                        key: { text: "Submitted by" },
+                        value: { html: '<div>John Doe (HEO)</div><div>31 March 2026, 2:17pm</div>' }
+                    },
+                    {
+                        key: { text: "Approved by" },
+                        value: { html: '<div>Jane Doe (HEO)</div><div>14 April 2026, 2:44pm</div>' }
+                    } ,
+                    {
+                        key: { text: "Payment released by" },
+                        value: { html: '<div>James Doe (HEO)</div><div>15 April 2026, 11:03am</div>' }
+                    },
+                    {
+                        key: { text: "Completed by" },
+                        value: { html: '<div>Jennifer Doe (HEO)</div><div>16 April 2026, 11:41am</div>' }
+                    }
+                    ]
+                    }) 
+                    }}
+
+                {{ govukButton({
+                    text: "View notes and messages",
+                    classes: "govuk-button--secondary",
+                    href:'claim-notes-and-messages'
+                }) }}
+
+                {{ govukSummaryList({
+                card: {
+                    title: {
+                    text: "Customer details"
+                    }
+                },
+                rows: [
+                    {
+                    key: {
+                        text: "Name"
+                    },
+                    value: {
+                        text: "Xavier Grayson"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "National Insurance number"
+                    },
+                    value: {
+                        text: "QQ 12 34 56 C"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Date of birth"
+                    },
+                    value: {
+                        text: "5 January 1978"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Address"
+                    },
+                    value: {
+                        html: "72 Guild Street<br>London<br>SE23 6FH"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Identity"
+                    },
+                    value: {
+                        text: "Verified"
+                    }
+                    }
+                ]
+                }) 
+                }}
+
+                {{ govukSummaryList({
+                card: {
+                    title: {
+                    text: "Universal credit details"
+                    }
+                },
+                rows: [
+                    {
+                        key: { text: "Claimant ID" },
+                        value: { text: "f6f0bdf2-7b95-4201-a9a4-298a6baea069" }
+                    },
+                    {
+                        key: { text: "Work group" },
+                        value: { text: "Intensive work search" }
+                    }
+                ]
+                }) 
+                }}
+
+                {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Payment"
+                            }
+                        },
+                        rows: [
+                            {
+                                key: { text: "Payment made" },
+                                value: { text: "In advance" }
+                            }
+                        ]
+                        }) 
+                        }}
+
+                {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Claim details"
+                            }
+                        },
+                        rows: [
+                                {
+                                    key: { text: "Reason for claim" },
+                                    value: { text: "Something else" }
+                                },
+                                {
+                                    key: { text: "Date" },
+                                    value: { text: "12 December 2024" }
+                                },
+                                {
+                                    key: { text: "More information" },
+                                    value: { text: "Required for interview" }
+                                },
+                                {
+                                    key: { text: "Supporting evidence" },
+                                    value: { text: "Confirmation message from employer" }
+                                },
+                                {
+                                    key: { text: "Rapid Response Service" },
+                                    value: { text: "No" }
+                                }
+                                ]
+                        }) 
+                        }}
+
+                {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Boots"
+                            }
+                        },
+                        rows: 
+                           [
+                            {
+                                key: { text: "Items" },
+                                value: { text: "Trainers" }
+                            },
+                            {
+                                key: { text: "Cost" },
+                                value: { text: "£100.00" }
+                            },
+                            {
+                                key: { text: "More information" },
+                                value: {
+                                text: "More information about this supplier"
+                                }
+                            },
+                            {
+                                key: { text: "Additional costs" },
+                                value: { text: "£2.99" }
+                            },
+                            {
+                                key: { text: "Evidence for additional costs" },
+                                value: { text: "Shipping receipt" }
+                            },
+                            {
+                                key: { text: "Supplier total" },
+                                value: { text: "£102.99" }
+                            },
+                            {
+                                key: { text: "Payment method" },
+                                value: { text: "Approval to Buy (A2B)" }
+                            },
+                            {
+                                key: { text: "Account code" },
+                                value: { text: "11111111" }
+                            },
+                            {
+                                key: { text: "Proof of purchases" },
+                                value: { text: "Virtual payment card" }
+                            },
+                            {
+                                key: { text: "Card number" },
+                                value: { text: "•••• •••• •••• 1111" }
+                            },
+                            {
+                                key: { text: "Total cost on card" },
+                                value: { text: "£123.00" }
+                            }
+                            ]
+                          
+                        }) 
+                        }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

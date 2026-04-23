@@ -1,20 +1,48 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/branded.html" %}
 
-{% set pageName="Home" %}
+{% set pageName = "Home" %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+      <h1 class="govuk-heading-l">Prototype catalogue</h1>
 
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
-test
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+      <h2 class="govuk-heading-m">Discovery</h2>
+      <ul class="govuk-list">
+        <li>
+          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/mvp/claims-overview">MVP</a>
+        </li>
+        <li>
+          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/mvp-unbranded/claims-overview">MVP &#40;Unbranded&#41;</a>
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Alpha</h2>
+      <h3 class="govuk-heading-s">Round 1</h3>
+      <ul class="govuk-list">
+        <li>
+          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/conditional-content/claim-reason/pick-reason.html">Conditional content</a>
+        </li>
+        <li>
+          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/zero-free-texts/pick-reason.html">Remove free text entry</a>
+        </li>
+      </ul>
+      <h3 class="govuk-heading-s">Round 2</h3>
+      <ul class="govuk-list">
+        <li>
+          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/cc-iteration-1/claim-reason/pick-reason.html">Updated supplier and item details</a>
+        </li>
+        <li>
+          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/cc-iteration-3/claim-reason/pick-reason.html">Upload supporting evidence</a>
+        </li>
+        <li>
+          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/cc-iteration-4/claim-reason/pick-reason.html">Descriptive navigation</a>
+        </li>
+      </ul>
+
+    </div>
   </div>
-</div>
 
 {% endblock %}

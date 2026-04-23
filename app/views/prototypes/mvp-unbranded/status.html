@@ -1,0 +1,36 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("claim-submit") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {{ govukPanel({
+                titleText: "Application complete",
+                html: "Your reference number<br><strong>HDJ2123F</strong>"
+                }) }}
+
+            <h2 class="govuk-heading-m">What happens next</h2>
+            <p class="govuk-body">The claim will be reviewed, then approved or rejected.</p>
+            <p>
+                <a class="govuk-link" href="claims-overview">
+                    View all claims</a>
+            </p>
+
+        </div>
+    </div>
+{% endblock %}

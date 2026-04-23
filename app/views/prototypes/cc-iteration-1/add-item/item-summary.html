@@ -1,0 +1,31 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/prototypes/cc-iteration-1/add-item/pick-item" method="post" class="govuk-form-group">
+
+      <span class="govuk-caption-l">{{ data['supplier-name'] }}</span>
+      <h1 class="govuk-heading-l">
+        Item list
+      </h1>
+
+      <p class="govuk-body">Multiple items can be bought from a single supplier.</p>
+
+      <p class="govuk-body">If buying items from more than one supplier, you can <span class="govuk-body govuk-!-font-weight-bold">add another supplier</span> to the claim after completing this section.</p>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Add an item
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends "layouts/branded.html" %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+{{ govukPhaseBanner({
+  tag: { text: "Alpha" },
+  html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab).</a>.' })
+}}
+{{ govukBackLink({
+  text: "Back",
+  href: "start-new-claim" })
+}}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Location</h1>
+
+{{ govukSelect({
+  id: "choose-location",
+  name: "choose-location",
+  label: {
+    text: "Choose location"
+  },
+  items: [
+    {
+      value: "alnwick",
+      text: "Ashington",
+      selected: true
+    },
+    {
+      value: "ashington",
+      text: "Ashington"
+    },
+    {
+      value: "bedlington",
+      text: "Bedlington"
+    },
+    {
+      value: "berwick",
+      text: "Berwick"
+    },
+    {
+      value: "baydon",
+      text: "Baydon"
+    },
+    {
+      value: "blyth",
+      text: "Blyth"
+    },
+    {
+      value: "cathedral-square-newcastle",
+      text: "Cathedral Square Newcastle"
+    },
+    {
+      value: "cramlington",
+      text: "Cramlington"
+    },
+    {
+      value: "gateshead",
+      text: "Gateshead"
+    },
+    {
+      value: "hexham",
+      text: "Hexham"
+    },
+    {
+      value: "houghton-le-spring",
+      text: "Houghton le Spring"
+    },
+    {
+      value: "jarrow",
+      text: "Jarrow"
+    },
+    {
+      value: "killingworth",
+      text: "Killingworth"
+    },
+    {
+      value: "morpeth",
+      text: "Morpeth"
+    },
+    {
+      value: "newcastle-east-byker",
+      text: "Newcastle East Byker"
+    },
+    {
+      value: "newcastle-west",
+      text: "Newcastle West"
+    },
+    {
+      value: "north-shields",
+      text: "North Shields"
+    },
+    {
+      value: "south-shields",
+      text: "South Shields"
+    },
+    {
+      value: "sunderland",
+      text: "Sunderland"
+    },
+    {
+      value: "wallsend",
+      text: "Wallsend"
+    },
+    {
+      value: "washington",
+      text: "Washington"
+    }
+  ]
+}) }}
+
+<p class="govuk-body">The Jobcentre Plus you have selected will be responsible for this Flexible Support Fund claim.</p>
+
+{{ govukWarningText({
+text: "You will not be able to change the location after submitting the claim.",
+iconFallbackText: "Warning"
+}) }}
+
+{{ govukButton({
+text: "Continue",
+href: "search-for-customer"
+}) }}
+</div>
+</div>
+
+{% endblock %}

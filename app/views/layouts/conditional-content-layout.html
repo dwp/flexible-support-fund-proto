@@ -1,0 +1,49 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+
+{% block header %}
+
+  <header class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name dwp-header__service-name--with-action">
+        <a href="/index.html" class="dwp-header__link">Flexible Support Fund</a>
+      </div>
+      <div class="dwp-header__service-action">
+        <a href="#" class="dwp-header__link">Sign out</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Alpha
+        </strong>
+        <span class="govuk-phase-banner__text">
+          This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback by email</a>.
+        </span>
+      </p>
+    </div>
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+  </div>
+
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+  <footer class="govuk-footer">
+    <div class="govuk-width-container">
+      <h2 class="govuk-visually-hidden">About this website</h2>
+      <ul class="govuk-footer__inline-list">
+        <li class="govuk-footer__inline-list-item">
+          <a class="govuk-footer__link" href="">Accessibility statement</a>
+        </li>
+        <li class="govuk-footer__inline-list-item">
+          <a class="govuk-footer__link" href="">Privacy</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+{% endblock %}

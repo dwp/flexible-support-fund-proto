@@ -1,0 +1,105 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/prototypes/cc-iteration-3/add-item/item-list" method="post" class="govuk-form-group">
+
+    <span class="govuk-caption-l">{{ data['supplier-name'] }}</span>
+    <h1 class="govuk-heading-l">
+      {{ data['travel'] }} details
+    </h1>
+
+    <h2 class="govuk-heading-m">
+      Journeys
+    </h2>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="departure-location">
+        From
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="departure-location" name="departure-location" type="text">
+    </div>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="destination-location">
+        To
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="destination-location" name="destination-location" type="text">
+    </div>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend">
+          How often will the customer use the ticket?
+        </legend>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="season-ticket-use" name="season-ticket-use" type="radio" value="Daily">
+            <label class="govuk-label govuk-radios__label" for="season-ticket-use">
+              Daily
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="season-ticket-use-2" name="season-ticket-use" type="radio" value="Weekly">
+            <label class="govuk-label govuk-radios__label" for="season-ticket-use-2">
+              Weekly
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="season-ticket-use-3" name="season-ticket-use" type="radio" value="Monthly">
+            <label class="govuk-label govuk-radios__label" for="season-ticket-use-3">
+              Monthly
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="item-name">
+        Item name
+      </label>
+      <div id="item-name-hint" class="govuk-hint">
+        For example, 'Daysaver train ticket' or 'Countywide bus ticket'
+      </div>
+      <input class="govuk-input govuk-!-width-one-half" id="item-name" name="item-name" type="text" aria-describedby="item-name-hint">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="item-cost">
+        Item cost
+      </label>
+      <div class="govuk-input__wrapper">
+        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+        <input class="govuk-input govuk-input--width-5" id="item-cost" name="item-cost" type="text" spellcheck="false">
+      </div>
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="more-detail">
+        More information
+      </label>
+      <div id="more-detail-hint" class="govuk-hint">
+        Include any information that supports the claim or explain expensive costs
+      </div>
+      <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+    </div>
+
+    <div class="govuk-button-group">
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/submit-travel-cc-iteration-3" method="post" class="govuk-form-group">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['supplier-name'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              Travel
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="travel-1" name="travel" type="radio"
+                value="Bus, rail or tube ticket" aria-describedby="travel-1-hint">
+              <label class="govuk-label govuk-radios__label" for="travel-1">
+                Bus, rail or tube ticket
+              </label>
+              <div id="travel-1-hint" class="govuk-hint govuk-radios__hint">
+                For a single or return journey
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="travel-2" name="travel" type="radio" value="Season ticket">
+              <label class="govuk-label govuk-radios__label" for="travel-2">
+                Season ticket
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="travel-3" name="travel" type="radio" value="Taxi">
+              <label class="govuk-label govuk-radios__label" for="travel-3">
+                Taxi
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="travel-4" name="travel" type="radio" value="Car or bike rental">
+              <label class="govuk-label govuk-radios__label" for="travel-4">
+                Car or bike rental
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="travel-5" name="travel" type="radio" value="Fuel">
+              <label class="govuk-label govuk-radios__label" for="travel-5">
+                Fuel
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

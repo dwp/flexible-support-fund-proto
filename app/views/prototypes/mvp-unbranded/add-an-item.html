@@ -1,0 +1,49 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("add-a-supplier") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">{{data['supplier-name']}}</span>
+            <h1 class="govuk-heading-l">Add an item</h1>
+            <form action="/submit-item-category" method="post">
+
+                {{ govukRadios({
+                    name: "item-category",
+                    items: [
+                        { value: "TRAVEL", text: "Travel" },
+                        { value: "CLOTHING", text: "Clothing" },
+                        { value: "TOOLS_AND_EQUIPMENT", text: "Tools and equipment" },
+                        { value: "TRAINING", text: "Training (Classroom or Online)" },
+                        { value: "IDENTIFICATION", text: "Identification" },
+                        { value: "ACCOMMODATION", text: "Accommodation" },
+                        { divider: "or"},
+                        { value: "OTHER", text: "Something else" }
+                    ]
+                    }) 
+                }}
+
+                {{ govukButton({
+                        text: "Continue",
+                        type: "submit"
+                        }) 
+                }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

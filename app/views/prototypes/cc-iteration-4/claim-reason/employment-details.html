@@ -1,0 +1,139 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Claim details</h1>
+    <h2 class="govuk-heading-m">{{ data['employment'] }}</h2>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="distance-from">
+        Employer
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="distance-from" name="distance-from" type="text"
+        aria-describedby="distance-from-hint">
+    </div>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+        <legend class="govuk-fieldset__legend">
+          Date
+        </legend>
+        <div id="passport-issued-hint" class="govuk-hint">
+          For example, the date of an interview, work trial or starting a new job
+        </div>
+        <div class="govuk-date-input" id="passport-issued">
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                Day
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                name="passport-issued-day" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                Month
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                name="passport-issued-month" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                Year
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                name="passport-issued-year" type="text" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend">
+          Supporting evidence
+        </legend>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="supportingEvidence-1" name="supportingEvidence" type="radio"
+              value="Confirmation message from employer">
+            <label class="govuk-label govuk-radios__label" for="supportingEvidence-1">
+              Confirmation message from employer
+            </label>
+            <div id="supportingEvidence-1-hint" class="govuk-hint govuk-radios__hint">
+              Email, text or social media message
+            </div>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="supportingEvidence-2" name="supportingEvidence" type="radio"
+              value="Work coach referral">
+            <label class="govuk-label govuk-radios__label" for="supportingEvidence-2">
+              Work coach referral
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="supportingEvidence-3" name="supportingEvidence" type="radio"
+              value="Work coach booked appointment">
+            <label class="govuk-label govuk-radios__label" for="supportingEvidence-3">
+              Work coach booked appointment
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="supportingEvidence-4" name="supportingEvidence" type="radio"
+              value="Attendance agreed by work coach">
+            <label class="govuk-label govuk-radios__label" for="supportingEvidence-4">
+              Attendance agreed by work coach
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="supportingEvidence-5" name="supportingEvidence" type="radio"
+              value="Self-employment business plan or projection">
+            <label class="govuk-label govuk-radios__label" for="supportingEvidence-5">
+              Self-employment business plan or projection
+            </label>
+          </div>
+          <div class="govuk-radios__divider">or</div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="supportingEvidence-6" name="supportingEvidence" type="radio"
+              value="Not required" data-aria-controls="conditional-supportingEvidence">
+            <label class="govuk-label govuk-radios__label" for="supportingEvidence-6">
+              Not required
+            </label>
+          </div>
+          <div class="govuk-radios__conditional" id="conditional-supportingEvidence">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="supportingEvidence-6-input">
+                Reason
+              </label>
+              <input class="govuk-input govuk-!-width-one-half" id="supportingEvidence-6-input"
+                name="supportingEvidenceInput" type="text" spellcheck="false" autocomplete="">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    <span class="govuk-caption-m">Next</span>
+    <h3 class="govuk-heading-m">Add a supplier</h3>
+
+    <div class="govuk-button-group">
+      <a href="/prototypes/cc-iteration-4/add-supplier" type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

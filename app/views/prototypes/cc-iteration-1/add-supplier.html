@@ -1,0 +1,40 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/prototypes/cc-iteration-1/add-item/item-summary" method="post" class="govuk-form-group">
+
+    <h1 class="govuk-heading-l">Add a supplier</h1>
+
+    <p class="govuk-body">The customer can buy multiple items from a single supplier.</p>
+
+    <div class="govuk-inset-text">
+      If the customer is buying items from more than one supplier, you can add another supplier to the claim after completing this section.
+    </div>
+
+    <p class="govuk-body">For fuel claims, when the supplier is not known, enter ‘No supplier’.</p>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="supplier-name">
+        Supplier
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="supplier-name" name="supplier-name" type="text">
+    </div>
+
+    <div class="govuk-button-group">
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </div>
+
+  </form>
+
+  </div>
+</div>
+
+{% endblock %}

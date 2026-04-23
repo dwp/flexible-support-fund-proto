@@ -1,0 +1,43 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{ data['supplier-name'] }}</span>
+    <h1 class="govuk-heading-l">
+      Item details
+    </h1>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="item-name">
+        Item name
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="item-name" name="item-name" type="text">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="item-cost">
+        Item cost
+      </label>
+      <div id="item-cost-hint" class="govuk-hint">
+        Include pounds and pences, like 123.45 or 56.00
+      </div>
+      <div class="govuk-input__wrapper">
+        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+        <input class="govuk-input govuk-input--width-5" id="item-cost" name="item-cost" type="text" spellcheck="false" aria-describedby="item-cost-hint">
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

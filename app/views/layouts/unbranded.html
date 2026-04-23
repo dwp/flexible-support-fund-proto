@@ -1,0 +1,53 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+{% from "macros/back-link.njk" import backLink %}
+
+{% block header %}
+    {% from "internal-service-header/macro.njk" import dwpHeader %}
+
+    {{
+        dwpHeader({
+            serviceName: "Flexible Support Fund",
+            serviceHref: "/",
+            action: "Sign out",
+            actionHref: "#",
+            container: true
+        })
+}}
+
+    <div class="govuk-width-container">
+        {{ govukPhaseBanner({
+            tag: { text: "Alpha" },
+            html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab).</a>' })
+        }}
+
+        {% block backLink %}
+            {{ backLink("/") }}
+        {% endblock %}
+
+    </div>
+
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+    {% from "internal-service-footer/macro.njk" import dwpFooter %}
+
+    {{
+        dwpFooter({
+            meta: {
+                visuallyHiddenTitle: "About this website",
+                items: [
+                {
+                    href: "",
+                    text: "Accessibility statement"
+                },
+                {
+                    href: "",
+                    text: "Privacy"
+                }
+                ]
+            }
+        }) 
+}}
+{% endblock %}

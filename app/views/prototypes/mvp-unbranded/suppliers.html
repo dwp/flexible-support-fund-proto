@@ -1,0 +1,90 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("item-list") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Suppliers</h1>
+            <form>
+                {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Boots"
+                            },
+                            actions: {
+                                items: [
+                                {
+                                    href: "#",
+                                    text: "Change"
+                                }
+                                ]
+                            }
+                        },
+                        rows: [
+                           
+                                {
+                                    key: { text: "Items" },
+                                    value: { html: "Shoes" }
+                                },
+                                {
+                                    key: { text: "Cost" },
+                                    value: { html: "£33.00" }
+                                },
+                                {
+                                    key: { text: "Additional costs" },
+                                    value: { html: "None" }
+                                },
+                                {
+                                    key: { text: "Supplier total" },
+                                    value: { html: "£33.00" }
+                                },
+                                {
+                                    key: { text: "Payment method" },
+                                    value: { html: "Approval to Buy (A2B)" }
+                                },
+                                {
+                                    key: { text: "Account code" },
+                                    value: { html: "5213102908" }
+                                }
+
+                        ]
+                        }) }}
+
+                {{ govukButton({
+                            text: "Add a supplier",
+                            href: 'add-a-supplier',
+                            classes: "govuk-button--secondary"
+                            }) }}
+
+                <p>
+                    <strong>Total cost of claim
+                    </strong>
+                    &nbsp; &nbsp; &nbsp; £33.50</p>
+                <hr class="govuk-section-break govuk-section-break--visible">
+                <br/>
+
+                {{ govukButton({
+                        text: "Continue",
+                        href: "claim-review"
+                        }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("proof-of-purchase") }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-m">Reference HDJ2123F</span>
+            <h1 class="govuk-heading-l">Add a virtual payment card</h1>
+
+            <form>
+
+                {{ govukInput({
+                label: {
+                    text: "Card number"
+                },
+                hint: {
+                    text: "This is a 16-digit number. For example, 1234 5678 1234 5678"
+                },
+                classes: "govuk-input--width-20",
+                id: "virtual-card-number",
+                name: "virtual-card-number"
+                }) }}
+
+                {{ govukInput({
+                label: {
+                    text: "Total cost on card"
+                },
+                hint: {
+                    text: "For example, 123.45"
+                },
+                prefix: {
+                    text: "£"
+                },
+                classes: "govuk-input--width-10",
+                id: "total-cost-on-card",
+                name: "total-cost-on-card"
+                }) }}
+
+                <p>Proof of purchases will be confirmed. You will not be able to make further changes to this supplier.</p>
+
+                {{ govukButton({
+                    text: "Confirm",
+                    href: "proof-of-purchase-list"
+                    }) }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

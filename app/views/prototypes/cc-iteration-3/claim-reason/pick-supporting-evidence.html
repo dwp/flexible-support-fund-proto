@@ -1,0 +1,83 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/supporting-evidence-cc-iteration-3" method="post" class="govuk-form-group">
+
+    <h1 class="govuk-heading-l">Supporting evidence</h1>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend">
+      Evidence provided by the customer
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-1" name="supportingEvidence" type="radio" value="Confirmation message from employer">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-1">
+          Confirmation message from employer
+        </label>
+        <div id="supportingEvidence-1-hint" class="govuk-hint govuk-radios__hint">
+          Email, text or social media message
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-2" name="supportingEvidence" type="radio" value="Work coach referral">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-2">
+          Work coach referral
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-3" name="supportingEvidence" type="radio" value="Work coach booked appointment">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-3">
+          Work coach booked appointment
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-4" name="supportingEvidence" type="radio" value="Attendance agreed by work coach">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-4">
+          Attendance agreed by work coach
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-5" name="supportingEvidence" type="radio" value="Self-employment business plan or projection">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-5">
+          Self-employment business plan or projection
+        </label>
+      </div>
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-6" name="supportingEvidence" type="radio" value="Not required" data-aria-controls="conditional-supportingEvidence">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-6">
+          Not required
+        </label>
+      </div>
+      <div class="govuk-radios__conditional" id="conditional-supportingEvidence">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="supportingEvidence-6-input">
+            Reason
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="supportingEvidence-6-input" name="supportingEvidenceInput" type="text" spellcheck="false" autocomplete="">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+    <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

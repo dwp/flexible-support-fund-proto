@@ -1,0 +1,84 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/submit-item-cc-iteration-4" method="post" class="govuk-form-group">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['supplier-name'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              Add an item
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pickItem-1" name="pickItem" type="radio" value="Travel">
+              <label class="govuk-label govuk-radios__label" for="pickItem-1">
+                Travel
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pickItem-2" name="pickItem" type="radio" value="Clothing">
+              <label class="govuk-label govuk-radios__label" for="pickItem-2">
+                Clothing
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pickItem-3" name="pickItem" type="radio"
+                value="Tools and equipment">
+              <label class="govuk-label govuk-radios__label" for="pickItem-3">
+                Tools and equipment
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pickItem-4" name="pickItem" type="radio"
+                value="Training and materials">
+              <label class="govuk-label govuk-radios__label" for="pickItem-4">
+                Training and materials
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pickItem-5" name="pickItem" type="radio" value="Identification">
+              <label class="govuk-label govuk-radios__label" for="pickItem-5">
+                Identification
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pickItem-6" name="pickItem" type="radio" value="Accommodation">
+              <label class="govuk-label govuk-radios__label" for="pickItem-6">
+                Accommodation
+              </label>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pickItem-7" name="pickItem" type="radio" value="Something else">
+              <label class="govuk-label govuk-radios__label" for="pickItem-7">
+                Something else
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <span class="govuk-caption-m">Next</span>
+      <h3 class="govuk-heading-m">Item details</h3>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

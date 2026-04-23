@@ -1,0 +1,91 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/submit-reason" method="post" class="govuk-form-group">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Reason for the claim
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimReason-1" name="claimReason" type="radio" value="Employment">
+              <label class="govuk-label govuk-radios__label" for="claimReason-1">
+                Employment
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimReason-2" name="claimReason" type="radio" value="Self-employment start">
+              <label class="govuk-label govuk-radios__label" for="claimReason-2">
+                Self-employment start
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimReason-3" name="claimReason" type="radio" value="Training course">
+              <label class="govuk-label govuk-radios__label" for="claimReason-3">
+                Training course
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimReason-4" name="claimReason" type="radio" value="Sector-based Work Academy Programme (SWAP)">
+              <label class="govuk-label govuk-radios__label" for="claimReason-4">
+                Sector-based Work Academy Programme (SWAP)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimReason-5" name="claimReason" type="radio" value="Wales Skills to Employment Pathway (WSEP)">
+              <label class="govuk-label govuk-radios__label" for="claimReason-5">
+                Wales Skills to Employment Pathway (WSEP)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimReason-6" name="claimReason" type="radio" value="Jobcentre Plus appointment">
+              <label class="govuk-label govuk-radios__label" for="claimReason-6">
+                Jobcentre Plus appointment
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimReason-7" name="claimReason" type="radio" value="Job search support">
+              <label class="govuk-label govuk-radios__label" for="claimReason-6">
+                Job search support
+              </label>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimReason-8" name="claimReason" type="radio" value="Something else" data-aria-controls="conditional-claimReason">
+              <label class="govuk-label govuk-radios__label" for="claimReason-8">
+                Something else
+              </label>
+            </div>
+            <div class="govuk-radios__conditional" id="conditional-claimReason">
+              <div class="govuk-form-group">
+                <label class="govuk-visually-hidden" for="claimReason-8-input">
+                  Something else text input
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="claimReason-8-input" name="claimReasonInput" type="text" spellcheck="false" autocomplete="">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

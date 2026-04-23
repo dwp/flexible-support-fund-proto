@@ -1,0 +1,70 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/prototypes/conditional-content/claim-reason/employment-details" method="post" class="govuk-form-group">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Employment
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="employment-1" name="employment" type="radio" value="Interview">
+              <label class="govuk-label govuk-radios__label" for="employment-1">
+                Interview
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="employment-2" name="employment" type="radio" value="Job start">
+              <label class="govuk-label govuk-radios__label" for="employment-2">
+                Job start
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="employment-3" name="employment" type="radio" value="Work trials">
+              <label class="govuk-label govuk-radios__label" for="employment-3">
+                Work trials
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="employment-4" name="employment" type="radio" value="Work experience">
+              <label class="govuk-label govuk-radios__label" for="employment-4">
+                Work experience
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="employment-5" name="employment" type="radio" value="Job change">
+              <label class="govuk-label govuk-radios__label" for="employment-5">
+                Job change
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="employment-6" name="employment" type="radio" value="Increased earnings">
+              <label class="govuk-label govuk-radios__label" for="employment-6">
+                Increased earnings
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

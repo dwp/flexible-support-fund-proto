@@ -1,0 +1,145 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Claim details</h1>
+    <h2 class="govuk-heading-m">{{ data['claimReason'] }}</h2>
+
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+    <legend class="govuk-fieldset__legend">
+      Date
+    </legend>
+    <div class="govuk-date-input" id="passport-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend">
+      Supporting evidence
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-1" name="supportingEvidence" type="radio" value="Confirmation message from employer">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-1">
+          Confirmation message from employer
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-2" name="supportingEvidence" type="radio" value="Work coach referral">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-2">
+          Work coach referral
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-3" name="supportingEvidence" type="radio" value="Work coach booked appointment">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-3">
+          Work coach booked appointment
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-4" name="supportingEvidence" type="radio" value="Attendance agreed by work coach">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-4">
+          Attendance agreed by work coach
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-5" name="supportingEvidence" type="radio" value="Self-employment business plan or projection">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-5">
+          Self-employment business plan or projection
+        </label>
+      </div>
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="supportingEvidence-6" name="supportingEvidence" type="radio" value="Not required" data-aria-controls="conditional-supportingEvidence">
+        <label class="govuk-label govuk-radios__label" for="supportingEvidence-6">
+          Not required
+        </label>
+      </div>
+      <div class="govuk-radios__conditional" id="conditional-supportingEvidence">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="supportingEvidence-6-input">
+            Reason
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="supportingEvidence-6-input" name="supportingEvidenceInput" type="text" spellcheck="false" autocomplete="">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+    <legend class="govuk-fieldset__legend">
+      Is the customer currently using the Rapid Response Service?
+    </legend>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="changedName">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="changedName-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Rapid Response Service (RRS)
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <p>The Rapid Response Service helps workers and employers by giving those facing redundancy access to the services of Jobcentre Plus and its partners before they lose their jobs.</p>
+    <p>The support available through the Rapid Response Service is not just about Jobcentre Plus services - where appropriate other partners, such as the LSC, the devolved administrations, Local Authorities and Regional Development Agencies will be involved to provide a package of support to those affected.</p>
+  </div>
+</details>
+
+    <div class="govuk-button-group">
+      <a href="/prototypes/conditional-content/add-supplier" type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

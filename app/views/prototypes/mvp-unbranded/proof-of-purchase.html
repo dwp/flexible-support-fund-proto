@@ -1,0 +1,103 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("claims-overview") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-m">Reference HDJ2123F</span>
+            <h1 class="govuk-heading-l">Proof of purchase for Boots</h1>
+
+            {{ govukSummaryList({
+                rows: [
+                    {
+                    key: {
+                        text: "Items"
+                    },
+                    value: {
+                        text: "Trainers"
+                    }
+                    },
+                     {
+                    key: {
+                        text: "Supplier total"
+                    },
+                    value: {
+                        text: "£102.99"
+                    }
+                    }
+                ]
+            }) }}
+
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">More supplier details</span></summary>
+                <div class="govuk-details__text">
+                    {{ govukSummaryList({
+                    rows: [
+                    {
+                    key: {
+                        text: "Cost"
+                    },
+                    value: {
+                        text: "£100.00"
+                    }
+                    },
+                      {
+                    key: {
+                        text: "More information"
+                    },
+                    value: {
+                        text: "Required for role"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Additional costs"
+                    },
+                    value: {
+                        text: "£2.99"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Payment method"
+                    },
+                    value: {
+                        text: "Approval to Buy (A2B)"
+                    }
+                    }
+
+                ]
+            }) }}
+                </div>
+            </details>
+
+            {{ govukWarningText({
+                text: 'Add proof by 10 June 2026 to prevent the claim being marked as incomplete',
+                iconFallbackText: "Warning"
+                }) }}
+
+            {{ govukButton({
+                text: "Add a virtual payment card",
+                href: 'add-a-virtual-payment-card',
+                preventDoubleClick: true
+                }) }}
+        </div>
+    </div>
+{% endblock %}

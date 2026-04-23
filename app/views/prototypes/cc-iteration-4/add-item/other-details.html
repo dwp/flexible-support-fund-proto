@@ -1,0 +1,61 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/prototypes/cc-iteration-4/add-item/item-list" method="post" class="govuk-form-group">
+
+      <span class="govuk-caption-l">{{ data['supplier-name'] }}</span>
+      <h1 class="govuk-heading-l">
+        Item details
+      </h1>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="other-name">
+          Name
+        </label>
+        <input class="govuk-input govuk-!-width-one-half" id="other-name" name="other-name" type="text">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="item-cost">
+          Cost
+        </label>
+        <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-input--width-5" id="item-cost" name="item-cost" type="text"
+            spellcheck="false">
+        </div>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="more-detail">
+          More information
+        </label>
+        <div id="more-detail-hint" class="govuk-hint">
+          Include any information that supports the claim or explain expensive costs
+        </div>
+        <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5"
+          aria-describedby="more-detail-hint"></textarea>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <span class="govuk-caption-m">Next</span>
+      <h3 class="govuk-heading-m">Item list</h3>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Add evidence</h1>
+    <h2 class="govuk-heading-m">{{ data['supportingEvidence'] }}</h2>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="file-upload-1">
+    Upload a file
+  </label>
+  <div id="event-name-hint" class="govuk-hint">
+    For example, a screenshot or photopgraph of the evidence
+  </div>
+  <div
+    class="govuk-drop-zone"
+    data-module="govuk-file-upload">
+    <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file">
+  </div>
+</div>
+
+    <div class="govuk-button-group">
+      <a href="/prototypes/cc-iteration-3/add-supplier" type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

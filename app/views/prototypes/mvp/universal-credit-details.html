@@ -1,0 +1,81 @@
+{% extends "layouts/branded.html" %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{{ govukBackLink({
+  href: "customer-details" })
+}}
+
+{% block content %}
+
+{{ govukPhaseBanner({
+  tag: { text: "Alpha" },
+  html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab).</a>.' })
+}}
+{{ govukBackLink({
+  text: "Back",
+  href: "customer-details" })
+}}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Universal Credit details</h1>
+    
+    {{ govukInput({
+      label: {
+        text: "Claimant ID"
+      },
+      hint: {
+        text: "You can copy this information from Universal Credit, claimant details: it's 32 characters long"
+      },
+      id: "claimant-id",
+      name: "claimantID"
+    }) }}
+    
+    {{ govukRadios({
+      name: "workGroup",
+      fieldset: {
+        legend: {
+          text: "Work group"
+        }
+      },
+      items: [
+        {
+          value: "intensive-work-search",
+          text: "Intensive work search"
+        },
+        {
+          value: "work-preparation",
+          text: "Work preparation"
+        },
+        {
+          value: "work-focused-interview",
+          text: "Work focused interview"
+        },
+        {
+          value: "no-work-related-requirements",
+          text: "No work related requirements"
+        },
+        {
+          value: "light-touch",
+          text: "Light touch"
+        }
+      ]
+    }) }}
+
+{{ govukButton({
+  text: "Continue",
+  href: "payment"
+}) }}
+  </div>
+</div>
+
+{% endblock %}

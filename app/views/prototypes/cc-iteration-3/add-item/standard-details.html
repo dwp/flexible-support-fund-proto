@@ -1,0 +1,103 @@
+{% extends "layouts/conditional-content-layout.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/prototypes/cc-iteration-3/add-item/item-list" method="post" class="govuk-form-group">
+
+    <span class="govuk-caption-l">{{ data['supplier-name'] }}</span>
+    <h1 class="govuk-heading-l">
+      {% if data['pickItem'] !== 'Tools and equipment' %}
+        {{ data['pickItem'] }}
+      {% else %}
+        {{ data['equipment'] }}
+      {% endif %} details
+    </h1>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="item-name">
+        Item name
+      </label>
+      {% if data['pickItem'] == 'Training and materials' %}
+        <div id="item-name-hint" class="govuk-hint">
+          The training provider, course name or certification
+        </div>
+      {% endif %}
+
+      <input class="govuk-input govuk-!-width-one-half" id="item-name" name="item-name" type="text">
+    </div>
+
+    {% if data['pickItem'] !== 'Training and materials' %}
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="product-code">
+          Product code
+        </label>
+        <input class="govuk-input govuk-!-width-one-half" id="product-code" name="product-code" type="text">
+      </div>
+    {% endif %}
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="item-cost">
+        Item cost
+      </label>
+      <div class="govuk-input__wrapper">
+        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+        <input class="govuk-input govuk-input--width-5" id="item-cost" name="item-cost" type="text" spellcheck="false">
+      </div>
+    </div>
+
+    {% if data['pickItem'] == 'Tools and equipment' %}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="specialist-item-hint">
+          <legend class="govuk-fieldset__legend">
+            Is this a specialist item?
+          </legend>
+          <div id="specialist-item-hint" class="govuk-hint">
+            Such as a professional tool, laptop or piece of equipment
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specialist-item" name="specialist-item" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="specialist-item">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specialist-item-2" name="specialist-item" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="specialist-item-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    {% endif %}
+
+    {% if data['pickItem'] !== 'Training and materials' %}
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="more-detail">
+          More information
+        </label>
+        <div id="more-detail-hint" class="govuk-hint">
+          Include any information that supports the claim or explain expensive costs
+        </div>
+        <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+      </div>
+    {% endif %}
+
+    <div class="govuk-button-group">
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </div>
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}
