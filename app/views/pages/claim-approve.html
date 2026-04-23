@@ -1,0 +1,60 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("review") }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">Reference SPJ2123F</span>
+            <h1 class="govuk-heading-l">Approve claim</h1>
+
+            <form>
+                {{ govukSummaryList({
+                    rows: [
+                            {
+                        key: { text: "Location" },
+                        value: { text: "Alnwick" }
+                    },
+                                                {
+                        key: { text: "Cost centre" },
+                        value: { text: "000000" }
+                    }
+                    ,
+                    {
+                        key: { text: "Total cost" },
+                        value: { text: "£102.99" }
+                    },
+                    {
+                        key: { text: "Submitted by" },
+                        value: { html: '<a href="user">John Doe (HEO)</a><div>31 March 2026, 2:17pm</div>' }
+                    }
+                    ]
+                    }) 
+                    }}
+
+                <div class="govuk-button-group">
+                    {{ govukButton({
+                        text: "Confirm",
+                        href:'index'
+                        }) }}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

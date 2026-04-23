@@ -333,7 +333,7 @@ router.post('/cc-1-submit-travel-2', function (req, res) {
 
 // MVP unbranded
 
-const mvpUnbrandedBaseUrl = '/prototypes/mvp-unbranded/'
+const mvpUnbrandedBaseUrl = '/pages/'
 
 router.post('/submit-add-a-supplier', function (req, res) {
     const choice = req.body['supplier-name'];

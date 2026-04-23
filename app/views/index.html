@@ -1,47 +1,227 @@
-{% extends "layouts/branded.html" %}
+{% extends "layouts/unbranded.html" %}
 
-{% set pageName = "Home" %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{% block pageTitle %}
+  GOV.UK page template –
+  {{ serviceName }}
+  – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set submittedTag %}
+{{ govukTag({
+  text: "Submitted",
+    classes:'govuk-tag--grey'
+    }) }}
+{% endset -%}
+
+{% set completeTag %}
+{{ govukTag({
+  text: "Complete",
+    classes:'govuk-tag--green'
+    }) }}
+{% endset -%}
+
+{% set rejectedTag %}
+{{ govukTag({
+  text: "Rejected",
+    classes:'govuk-tag--red'
+    }) }}
+{% endset -%}
 
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-m">Newcastle East Byker</span>
+      <h1 class="govuk-heading-l">Claims overview</h1>
+      <p>
+        <a href="pages/location" class="govuk-link">Change location</a>
+      </p>
 
-      <h1 class="govuk-heading-l">Prototype catalogue</h1>
+      {{ govukButton({
+        text: "Start a new claim",
+        href: "pages/start-new-claim"
+      }) }}
 
-      <h2 class="govuk-heading-m">Discovery</h2>
-      <ul class="govuk-list">
-        <li>
-          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/mvp/claims-overview">MVP</a>
-        </li>
-        <li>
-          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/mvp-unbranded/claims-overview">MVP &#40;Unbranded&#41;</a>
-        </li>
-      </ul>
+      <span class="govuk-caption-m">Showing 1-6 of 6</span>
 
-      <h2 class="govuk-heading-m">Alpha</h2>
-      <h3 class="govuk-heading-s">Round 1</h3>
-      <ul class="govuk-list">
-        <li>
-          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/conditional-content/claim-reason/pick-reason.html">Conditional content</a>
-        </li>
-        <li>
-          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/zero-free-texts/pick-reason.html">Remove free text entry</a>
-        </li>
-      </ul>
-      <h3 class="govuk-heading-s">Round 2</h3>
-      <ul class="govuk-list">
-        <li>
-          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/cc-iteration-1/claim-reason/pick-reason.html">Updated supplier and item details</a>
-        </li>
-        <li>
-          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/cc-iteration-3/claim-reason/pick-reason.html">Upload supporting evidence</a>
-        </li>
-        <li>
-          <a class="govuk-link govuk-link--no-visited-state" href="prototypes/cc-iteration-4/claim-reason/pick-reason.html">Descriptive navigation</a>
-        </li>
-      </ul>
+      {{ govukTable({
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Reference"
+    },
+    {
+      text: "Customer"
+    },
+    {
+      text: "Total cost",
+      format: "numeric"
+    },
+    {
+      text: "Date"
+    },
+    {
+      text: "Status"
+    },
+    {
+      text: "Next action"
+    }
+  ],
+  rows: [
+    [
+      {
+        html: '<a href="pages/claim-view-submitted" class="govuk-link">BSJ2123F</a>'
+      },
+      {
+        text: "Brian Smith"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "1 Jan 2025"
+      },
+      {
+        text: "Submitted"
+      },
+      {
+        text:''
+      }
+    ],
+        [
+      {
+        html: '<a href="pages/claim-view" class="govuk-link">SPJ2123F</a>'
+      },
+      {
+        text: "Sarah Philips"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "1 Jan 2025"
+      },
+      {
+        text: 'Submitted'
+      },
+      {
+        html: '<a href="pages/review" class="govuk-link">Review</a>'
+      }
+    ],
+    [
+      {
+        html: '<a href="pages/claim-view" class="govuk-link">MBJ2123F</a>'
+      },
+      {
+        text: "Michael Braddock"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "13 May 2025"
+      },
+      {
+        text: "Payment released"
+      },
+      {
+         html: '<a href="pages/proof-of-purchases" class="govuk-link">Add proof of purchases</a>'
+      }
+    ],
+        [
+      {
+        html: '<a href="pages/claim-view" class="govuk-link">JDJ2123F</a>'
+      },
+      {
+        text: "John Dobson"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "13 May 2025"
+      },
+      {
+        text: "Approved"
+      },
+      {
+         html: '<a href="pages/release-payment" class="govuk-link">Release payment</a>'
+      }
+    ],
+    [
+      {
+        html: '<a href="pages/claim-view" class="govuk-link">MDJ2123F</a>'
+      },
+      {
+        text: "Meg Davidson"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "1 Jan 2025"
+      },
+      {
+        html: completeTag
+      },{
+      text:''}
+    ],
+    [
+      {
+        html: '<a href="pages/claim-view-rejected" class="govuk-link">XGJ2123F</a>'
+      },
+      {
+        text: "Xavier Grayson"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "12 Apr 2026"
+      },
+      {
+        html: rejectedTag
+      },{
+      text:''}
+    ]
+  ]
+}) }}
 
+      {{ govukPagination({
+              previous: {
+                href: "#"
+              },
+              next: {
+                href: "#"
+              },
+              items: [
+                {
+                  number: 1,
+                  current: true,
+                  href: "#"
+                },
+                {
+                  number: 2,
+                  href: "#"
+                },
+                {
+                  number: 3,
+                  href: "#"
+                }
+                ]
+}) }}
     </div>
   </div>
 
