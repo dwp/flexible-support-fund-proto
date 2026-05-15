@@ -1,0 +1,80 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("add-an-item") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">{{data['supplier-name']}}</span>
+            <h1 class="govuk-heading-l">Item details</h1>
+            <form>
+
+                {{ govukInput({
+                    label: {
+                        text: "Item name"
+                    },
+                    id: "item-name",
+                    name: "item-name",
+                    classes: "govuk-input--width-20"
+                    }) }}
+
+                {{ govukInput({
+                    id: "cost",
+                    name: "cost",
+                    label: {
+                        text: "Item cost"
+                    },
+                    hint:{
+                        text:'Include pounds and pence, like 123.45 or 156.00'
+                    },
+                    prefix: {
+                        text: "£"
+                    },
+                    classes: "govuk-input--width-5",
+                    spellcheck: false
+                    }) }}
+
+                <h2 class="govuk-heading-m">Additional item information</h2>
+                <p>Include any information that supports the claim or explains costs, such as:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>product codes, where possible</li>
+                    <li>locations for departure and arrival on travel costs</li>
+                    <li>distance covered in miles for fuel costs</li>
+                    <li>reasons for the purchase of non-standard, high-specification or high-cost items</li>
+                </ul>
+
+                {{ govukTextarea({
+                    name: "more-information",
+                    id: "more-information",
+                    label: {
+                        text: "Additional item information",
+                        classes: "govuk-fieldset__legend",
+                        isPageHeading: false
+                    }
+
+                            }) 
+                            }}
+
+                {{ govukButton({
+                    text: "Continue",
+                    href: 'item-list'
+                    }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -11,13 +11,14 @@ const findAddressPlugin = require("find-an-address-plugin");
 
 findAddressPlugin(router);
 
-// Logging session data  
+// Logging session data
 // This code shows in the terminal what session data has been saved.
 router.use((req, res, next) => {
     const log = {
         method: req.method,
         url: req.originalUrl,
-        data: req.session.data
+        data: req.session.data,
+        body: req.body
     }
     console.log(JSON.stringify(log, null, 2))
 
@@ -26,7 +27,7 @@ router.use((req, res, next) => {
 
 // This code shows in the terminal what page you are on and what the previous page was.
 router.use('/', (req, res, next) => {
-    res.locals.currentURL = req.originalUrl; //current screen  
+    res.locals.currentURL = req.originalUrl; //current screen
     res.locals.prevURL = req.get('Referrer'); // previous screen
 
     console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subfolder);
@@ -34,7 +35,7 @@ router.use('/', (req, res, next) => {
     next();
 });
 
-// Routing for the example journey. 
+// Routing for the example journey.
 router.post('/country-answer', function (request, response) {
 
     var country = request.session.data['country']
@@ -379,3 +380,19 @@ router.post('/submit-review', function (req, res) {
     }
 });
 
+router.post('/submit-cancel-claim-or-supplier', function (req, res) {
+  const choice = req.body['claim-or-supplier']
+  const version = req.query['v']
+
+  console.log("version:", version)
+  req.session.data['claim-or-supplier'] = choice
+
+  switch (choice) {
+    case 'claim':
+      res.redirect(`${mvpUnbrandedBaseUrl}v${version}/cancel-claim`)
+      break
+    case 'supplier':
+     res.redirect(`${mvpUnbrandedBaseUrl}v${version}/cancel-supplier-pick-supplier`)
+     break
+  }
+})

@@ -1,0 +1,82 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("cancel-claim-or-supplier") }}
+{% endblock %}
+
+{% set otherReasonHtml %}
+{{ govukInput({
+  id: "other-reason",
+  name: "otherReason",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Please specify"
+  }
+}) }}
+{% endset -%}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">
+              <span class="govuk-caption-l">Reference HDJ2123F</span>
+              Choose a supplier you want to cancel
+            </h1>
+
+            <form action="/pages/v2/cancel-supplier" method="post">
+                {{ govukRadios({
+                  classes: "govuk-radios",
+                  name: "",
+                  items: [
+                    {
+                      value: "supplier-1",
+                      text: "Argos (£23.99)"
+                    },
+                    {
+                      value: "supplier-2",
+                      text: "Next (£99.99)"
+                    }
+                  ]
+                  })
+                }}
+
+                {{ govukButton({
+                    text: "Continue",
+                    type: 'Submit',
+                    classes: 'govuk-button'
+                  })
+                }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,228 +1,152 @@
-{% extends "layouts/unbranded.html" %}
+{% extends "layouts/main.html" %}
 
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/table/macro.njk" import govukTable %}
-{% from "govuk/components/tag/macro.njk" import govukTag %}
-{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+{% set pageName="Home" %}
 
-{% block pageTitle %}
-  GOV.UK page template –
-  {{ serviceName }}
-  – GOV.UK Prototype Kit
-{% endblock %}
-
-{% set submittedTag %}
-{{ govukTag({
-  text: "Submitted",
-    classes:'govuk-tag--grey'
-    }) }}
-{% endset -%}
-
-{% set completeTag %}
-{{ govukTag({
-  text: "Complete",
-    classes:'govuk-tag--green'
-    }) }}
-{% endset -%}
-
-{% set rejectedTag %}
-{{ govukTag({
-  text: "Rejected",
-    classes:'govuk-tag--red'
-    }) }}
-{% endset -%}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      <span class="govuk-caption-m">Newcastle East Byker</span>
-      <h1 class="govuk-heading-l">Claims overview</h1>
-      <p>
-        <a href="pages/location" class="govuk-link">Change location</a>
-      </p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-      {{ govukButton({
-        text: "Start a new claim",
-        href: "pages/start-new-claim"
-      }) }}
+    <h1 class="govuk-heading-xl">
+      Flexible Support Fund applications
+    </h1>
 
-      <span class="govuk-caption-m">Showing 1-6 of 6</span>
+    <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#application">
+            Current Functionality
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#archive">
+            Historic archive
+          </a>
+        </li>
+      </ul>
 
-      {{ govukTable({
-  firstCellIsHeader: true,
-  head: [
-    {
-      text: "Reference"
-    },
-    {
-      text: "Customer"
-    },
-    {
-      text: "Total cost",
-      format: "numeric"
-    },
-    {
-      text: "Date"
-    },
-    {
-      text: "Status"
-    },
-    {
-      text: "Next action"
-    }
-  ],
-  rows: [
-    [
-      {
-        html: '<a href="pages/claim-view-submitted" class="govuk-link">BSJ2123F</a>'
-      },
-      {
-        text: "Brian Smith"
-      },
-      {
-        text: "£97.45",
-        format: "numeric"
-      },
-      {
-        text: "1 Jan 2025"
-      },
-      {
-        text: "Submitted"
-      },
-      {
-        text:''
-      }
-    ],
-        [
-      {
-        html: '<a href="pages/claim-view" class="govuk-link">SPJ2123F</a>'
-      },
-      {
-        text: "Sarah Philips"
-      },
-      {
-        text: "£97.45",
-        format: "numeric"
-      },
-      {
-        text: "1 Jan 2025"
-      },
-      {
-        text: 'Submitted'
-      },
-      {
-        html: '<a href="pages/review" class="govuk-link">Review</a>'
-      }
-    ],
-    [
-      {
-        html: '<a href="pages/claim-view" class="govuk-link">MBJ2123F</a>'
-      },
-      {
-        text: "Michael Braddock"
-      },
-      {
-        text: "£97.45",
-        format: "numeric"
-      },
-      {
-        text: "13 May 2025"
-      },
-      {
-        text: "Payment released"
-      },
-      {
-         html: '<a href="pages/proof-of-purchases" class="govuk-link">Add proof of purchases</a>'
-      }
-    ],
-        [
-      {
-        html: '<a href="pages/claim-view" class="govuk-link">JDJ2123F</a>'
-      },
-      {
-        text: "John Dobson"
-      },
-      {
-        text: "£97.45",
-        format: "numeric"
-      },
-      {
-        text: "13 May 2025"
-      },
-      {
-        text: "Approved"
-      },
-      {
-         html: '<a href="pages/release-payment" class="govuk-link">Release payment</a>'
-      }
-    ],
-    [
-      {
-        html: '<a href="pages/claim-view" class="govuk-link">MDJ2123F</a>'
-      },
-      {
-        text: "Meg Davidson"
-      },
-      {
-        text: "£97.45",
-        format: "numeric"
-      },
-      {
-        text: "1 Jan 2025"
-      },
-      {
-        html: completeTag
-      },{
-      text:''}
-    ],
-    [
-      {
-        html: '<a href="pages/claim-view-rejected" class="govuk-link">XGJ2123F</a>'
-      },
-      {
-        text: "Xavier Grayson"
-      },
-      {
-        text: "£97.45",
-        format: "numeric"
-      },
-      {
-        text: "12 Apr 2026"
-      },
-      {
-        html: rejectedTag
-      },{
-      text:''}
-    ]
-  ]
-}) }}
 
-      {{ govukPagination({
-              previous: {
-                href: "#"
-              },
-              next: {
-                href: "#"
-              },
-              items: [
-                {
-                  number: 1,
-                  current: true,
-                  href: "#"
-                },
-                {
-                  number: 2,
-                  href: "#"
-                },
-                {
-                  number: 3,
-                  href: "#"
-                }
-                ]
-}) }}
-    </div>
-  </div>
+      <div class="govuk-tabs__panel" id="application">
+        <h2 class="govuk-heading-m">Flexible Support Fund</h2>
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
 
-{% endblock %}
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3"
+                  style="font-size: 16pt;">
+                  Version 1 - FSF1 Claim management
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content"
+              aria-labelledby="accordion-with-summary-sections-heading-3">
+
+              <div class="app-most-recent">
+                <strong class="govuk-tag govuk-tag--red ">DESIGN DONE</strong>
+                <h2 class="govuk-heading-m govuk-!-padding-top-3">FSF1 Claim management</h2>
+
+                <a href="pages/v1/index" class="govuk-button govuk-button--secondary"
+                  data-module="govuk-button">
+                  Start
+                </a>
+
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <p>
+                     Change details [JIRA]: <a target=blank href="https://dwpdigital.atlassian.net/projects/IAGDY/versions/30729/tab/release-report-all-issues">FSF: MVP</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Journey [Sharepoint]: <a target=blank href="https://dwpgovuk.sharepoint.com/:f:/r/sites/ext-iag-design/Shared%20Documents/UCD/Flexible%20Support%20Fund%20(FSF)/Ready%20for%20development?csf=1&web=1&e=o4XTFh">All Designs</a>
+                    </p>
+                  </li>
+                </ul>
+ 
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-full">
+                    <p>Date of iteration: March 2025</br>
+                      Designers: Jack Hartley</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3"
+                  style="font-size: 16pt;">
+                  Version 2 - Cancel Claims
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content"
+              aria-labelledby="accordion-with-summary-sections-heading-3">
+
+              <div class="app-most-recent">
+                <strong class="govuk-tag govuk-tag--yellow ">DESIGN IN PROGRESS</strong>
+                <h2 class="govuk-heading-m govuk-!-padding-top-3">Iteration - adds cancel action for claims
+                </h2>
+
+
+                <a href="pages/v2/index" class="govuk-button govuk-button--secondary"
+                  data-module="govuk-button">
+                  Start application
+                </a>
+
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <p>
+                     Change details [JIRA]: <a target=blank href="https://dwpdigital.atlassian.net/browse/IAGDY-29526">IAGDY-29526</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Journey [Lucid]: <a target=blank href="https://lucid.app/lucidspark/3d537d4d-f2ca-4be9-aae0-436beae3cd80">Action to cancel claims</a>
+                    </p>
+                  </li>
+                </ul>
+
+
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-full">
+                    <p>Date of iteration: May 2026</br>
+                      Designers: Ryan Garrett
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+
+        </div>
+      </div>
+
+
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="archive">
+        <h2 class="govuk-heading-m">Historic archive </h2>
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+
+                    <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3"
+                  style="font-size: 16pt;">
+                  No versions are yet archived
+                </span>
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        {% endblock %}

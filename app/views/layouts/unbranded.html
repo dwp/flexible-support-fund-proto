@@ -15,15 +15,9 @@
 }}
 
     <div class="govuk-width-container">
-        {{ govukPhaseBanner({
-            tag: { text: "Alpha" },
-            html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab).</a>' })
-        }}
-
         {% block backLink %}
             {{ backLink("/") }}
         {% endblock %}
-
     </div>
 
 {% endblock %}
@@ -48,6 +42,6 @@
                 }
                 ]
             }
-        }) 
+        })
 }}
 {% endblock %}

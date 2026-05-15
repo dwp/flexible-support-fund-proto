@@ -1,0 +1,120 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("cancel-claim-or-supplier") }}
+{% endblock %}
+
+{% set otherReasonHtml %}
+{{ govukInput({
+  id: "other-reason",
+  name: "otherReason",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Please specify"
+  }
+}) }}
+{% endset -%}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">
+              <span class="govuk-caption-l">Reference HDJ2123F</span>
+              What is the reason for cancelling the supplier?
+            </h1>
+
+            <form action="/pages/cancel-supplier-declaration" method="post">
+
+                {{ govukRadios({
+                  classes: "govuk-radios",
+                  name: "cancel-supplier-reason",
+
+                  items: [
+                    {
+                      value: "agent-error",
+                      text: "Agent error
+"
+                    },
+                    {
+                      value: "approved-in-error",
+                      text: "Approved in error"
+                    },
+                    {
+                      value: "award-details-incorrect",
+                      text: "Award details incorrect"
+                    },
+                    {
+                      value: "duplicate-claim",
+                      text: "Duplicate claim"
+                    },
+                    {
+                      value: "incorrect-payment-method",
+                      text: "Incorrect payment method"
+                    },
+                    {
+                      value: "items-no-longer-available",
+                      text: "Item(s) no longer available from supplier"
+                    },
+                    {
+                      value: "items-no-longer-required",
+                      text: "Item(s) no longer required"
+                    },
+                    {
+                      value: "non-compliant-award",
+                      text: "Non-compliant award"
+                    },
+                    {
+                      value: "price-inceased-on-a2b",
+                      text: "Price increased on A2B"
+                    },
+                    {
+                      divider: "or"
+                    },
+                    {
+                      value: "OTHER", text: "Other", conditional: {
+                        html: otherReasonHtml
+                      }
+                    }
+                  ]
+                  })
+                }}
+
+                {{ govukButton({
+                    text: "Continue",
+                    type: 'Submit'
+                  })
+                }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

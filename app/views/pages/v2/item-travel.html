@@ -1,0 +1,64 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("add-an-item") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">{{data['supplier-name']}}</span>
+            <h1 class="govuk-heading-l">Travel</h1>
+            <form action="/submit-item-subcategory" method="post">
+
+                {{ govukRadios({
+                    name: "item-subcategory",
+                    items: [
+                                {
+                                    value: "BUS_RAIL_OR_TUBE_TICKET",
+                                    text: "Bus, rail or tube ticket",
+                                    hint: {text:'for a single or return journey'}
+                                },
+                                {
+                                    value: "SEASON_TICKET",
+                                    text: "Season ticket"
+                                },
+                                {
+                                    value: "TAXI",
+                                    text: "Taxi"
+                                },
+                                {
+                                    value: "CAR_OR_BIKE_RENTAL",
+                                    text: "Car or bike rental"
+                                },
+                                {
+                                    value: "FUEL",
+                                    text: "Fuel"
+                                }
+                                ]
+
+                
+                    }) 
+                }}
+
+                {{ govukButton({
+                        text: "Continue",
+                        type: "submit"
+                        }) 
+                }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("release-payment") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">Reference JDJ2123F</span>
+            <h1 class="govuk-heading-l">Boots</h1>
+
+            {{ govukSummaryList({
+                rows: [
+                    {
+                    key: {
+                        text: "Items"
+                    },
+                    value: {
+                        text: "Trainers"
+                    }
+                    },
+                     {
+                    key: {
+                        text: "Supplier total"
+                    },
+                    value: {
+                        text: "£102.99"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Payment method"
+                    },
+                    value: {
+                        text: "Approval to Buy (A2B)"
+                    }
+                    }
+                ]
+            }) }}
+
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">More supplier details</span></summary>
+                <div class="govuk-details__text">
+                    {{ govukSummaryList({
+                rows: [
+                    {
+                    key: {
+                        text: "Cost"
+                    },
+                    value: {
+                        text: "£100.00"
+                    }
+                    },
+                      {
+                    key: {
+                        text: "More information"
+                    },
+                    value: {
+                        text: "Required for role"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Additional costs"
+                    },
+                    value: {
+                        text: "£2.99"
+                    }
+                    }
+
+                ]
+            }) }}
+                </div>
+            </details>
+
+            {{ govukInsetText({
+                text: "£102.99 has been paid by Approval to Buy (A2B)"
+                }) }}
+
+            {{ govukButton({
+                text: "Confirm payment",
+                href: 'release-success',
+                preventDoubleClick: true
+                }) }}
+        </div>
+    </div>
+{% endblock %}

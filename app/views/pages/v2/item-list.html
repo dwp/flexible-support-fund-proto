@@ -1,0 +1,171 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("add-an-item") }}
+{% endblock %}
+
+{% set otherReasonHtml %}
+{{ govukInput({
+  id: "other-reason",
+  name: "otherReason",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Reason"
+  }
+}) }}
+{% endset -%}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">{{data['supplier-name']}}</span>
+            <h1 class="govuk-heading-l">Item list</h1>
+            <form>
+                <p>Multiple items can be bought from a single supplier.</p>
+                <p>If buying items from more than one supplier, you can
+                    <strong>add another supplier</strong>
+                    to the claim after completing this section.</p>
+
+                {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Shoes"
+                            },
+                            actions: {
+                                items: [
+                                {
+                                    href: "#",
+                                    text: "Change"
+                                }
+                                ]
+                            }
+                        },
+                        rows: [
+                            {
+                            key: {
+                                text: "Category"
+                            },
+                            value: {
+                                text: "Something else"
+                            }
+                            },
+                            {
+                             key: {
+                                text: "Cost"
+                            },
+                            value: {
+                                text: "£33.50"
+                            }
+                            }
+                        ]
+                        }) }}
+
+                {{ govukButton({
+                            text: "Add an item",
+                            href: 'add-an-item',
+                            classes: "govuk-button--secondary"
+                            }) }}
+
+                <hr class="govuk-section-break govuk-section-break--visible">
+                <br/>
+
+                {{ govukInput({
+                    id: "cost",
+                    name: "cost",
+                    label: {
+                        text: "Additional costs (optional)"
+                    },
+                    hint:{
+                        text:'For example, service or delivery charges'
+                    },
+                    prefix: {
+                        text: "£"
+                    },
+                    classes: "govuk-input--width-5",
+                    spellcheck: false
+                    }) }}
+
+                {{ govukTextarea({
+                    name: "moreInformation",
+                    id: "moreInformation",
+                    label: {
+                        text: "Evidence for additional costs (optional)",
+                        classes: "govuk-fieldset__legend",
+                        isPageHeading: false
+                    }
+
+                            }) 
+                            }}
+
+                <p>
+                    <strong>Supplier total
+                    </strong>
+                    &nbsp; &nbsp; &nbsp; £33.50</p>
+                <hr class="govuk-section-break govuk-section-break--visible">
+                <br/>
+
+                {{ govukRadios({
+                    name: "paymentMethod",
+                    fieldset: {
+                        legend: {
+                        text: "Payment method",
+                        classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        { value: "APPROVAL_TO_BUY", text: "Approval to Buy (A2B)" },
+                        { value: "CENTRAL_PAYMENT_SYSTEM", text: "Central Payment System (CPS)",
+                         conditional: {
+                                    html: otherReasonHtml
+                                } }
+                        ]
+                    }) }}
+
+                {{ govukSelect({
+                    id: "accountCode",
+                    name: "accountCode",
+                    label: {
+                        text: "Account code"
+                    },
+                    items: [
+                        {
+                        value: "00000000",
+                        text: "Choose a code",
+                        selected: true
+                        },
+                        { value: "11111111", text: "11111111" },
+                        { value: "22222222", text: "22222222" },
+                        { value: "33333333", text: "33333333" },
+                        { value: "44444444", text: "44444444" },
+                        { value: "55555555", text: "55555555" },
+                        { value: "66666666", text: "66666666" },
+                        { value: "77777777", text: "77777777" },
+                        { value: "88888888", text: "88888888" },
+                        { value: "99999999", text: "99999999" }
+                    ]
+                    }) }}
+
+                {{ govukButton({
+                        text: "Continue",
+                        href: "suppliers"
+                        }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

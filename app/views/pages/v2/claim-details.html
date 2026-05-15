@@ -1,0 +1,120 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("reason") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Claim details</h1>
+            <form>
+
+                <legend class="govuk-fieldset__legend">Date</legend>
+
+                {{ govukDateInput({
+                                id: "date",
+                                namePrefix: "passport-issued",
+                                fieldset: {
+                                    legend: {
+                                    text: "",
+                                    isPageHeading: true,
+                                    classes: "govuk-fieldset__legend--l"
+                                    }
+                                },
+                                hint: {
+                                    text: "The start of a course or job or the date of an appointment. For example, 27 3 2025"
+                            }
+                    }) }}
+
+                <h2 class="govuk-heading-m">Additional claim information</h2>
+
+                <p>Include any information that supports the claim, such as:</p>
+                <ul class="govuk-body">
+                    <li>employer details for interviews, work trials or work experience</li>
+                    <li>employer details when the customer is starting a new job, or has experienced job changes or increased earnings</li>
+                    <li>course details for training such as Sector-based Work Academy (SWAP) or Wales Skills to Employment Pathway (WSEP) claims</li>
+                    <li>any other appointment details and notes</li>
+                </ul>
+
+                {{ govukTextarea({
+                            name: "moreInformation",
+                            id: "moreInformation",
+                            label: {
+                                text: "Additional claim information",
+                                classes: "govuk-fieldset__legend",
+                                isPageHeading: false
+                            }
+
+                            }) 
+                            }}
+
+                {{ govukRadios({
+                            name: "supportingEvidence",
+                            fieldset: {
+                                legend: {
+                                text: "Supporting evidence"
+                                }
+                            },
+                            items: [
+                                { value: "CONFIRMATION_MESSAGE_FROM_EMPLOYER", text: "Confirmation message from employer" },
+                                { value: "WORK_COACH_REFERRAL", text: "Work Coach referral" },
+                                { value: "WORK_COACH_BOOKED_APPOINTMENT", text: "Work Coach booked appointment" },
+                                { value: "ATTENDANCE_AGREED_BY_WORK_COACH", text: "Attendance agreed by Work Coach" },
+                                { value: "SELF_EMPLOYMENT_BUSINESS_PLAN", text: "Self employment business plan or projections" },
+                                    {
+                                divider: "or"
+                                },
+                                { value: "NOT_REQUIRED", text: "Not required" }
+]
+                            }) }}
+
+                {{ govukRadios({
+                                classes: "govuk-radios--inline",
+                                name: "changedName",
+                                fieldset: {
+                                    legend: {
+                                    text: "Is the customer currently using the rapid response service?",
+                                    isPageHeading: false
+                                    }
+                                },
+                                items: [
+                                    {
+                                    value: "yes",
+                                    text: "Yes"
+                                    },
+                                    {
+                                    value: "no",
+                                    text: "No"
+                                    }
+                                ]
+                                }) }}
+
+                {{ govukDetails({
+                            summaryText: "Rapid Response Service (RRS)",
+                            text: "The Rapid Response Service helps workers and employers by giving those facing redundancy access to the services of Jobcentre Plus and its partners before they lose their jobs.\n
+                                    The support available through the Rapid Response Service is not just about Jobcentre Plus services - where appropriate other partners, such as the LSC, the devolved administrations, Local Authorities and Regional Development Agencies will be involved to provide a package of support to those affected."
+                            }) }}
+
+                {{ govukButton({
+                    text: "Continue",
+                    href: "add-a-supplier"
+                    }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

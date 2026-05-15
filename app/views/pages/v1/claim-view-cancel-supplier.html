@@ -62,14 +62,22 @@
                         value: { html: '<div>Jennifer Doe (HEO)</div><div>16 April 2026, 11:41am</div>' }
                     }
                     ]
-                    }) 
+                    })
                     }}
 
-                {{ govukButton({
-                    text: "View notes and messages",
-                    classes: "govuk-button--secondary",
-                    href:'claim-notes-and-messages'
-                }) }}
+                <div class="govuk-button-group">
+                  {{ govukButton({
+                      text: "View notes and messages",
+                      classes: "govuk-button--secondary",
+                      href:'claim-notes-and-messages'
+                  }) }}
+
+                  {{ govukButton({
+                      text: "Cancel supplier",
+                      classes: "govuk-button--secondary",
+                      href:'cancel-supplier'
+                  }) }}
+                </div>
 
                 {{ govukSummaryList({
                 card: {
@@ -119,7 +127,7 @@
                     }
                     }
                 ]
-                }) 
+                })
                 }}
 
                 {{ govukSummaryList({
@@ -138,7 +146,7 @@
                         value: { text: "Intensive work search" }
                     }
                 ]
-                }) 
+                })
                 }}
 
                 {{ govukSummaryList({
@@ -153,7 +161,7 @@
                                 value: { text: "In advance" }
                             }
                         ]
-                        }) 
+                        })
                         }}
 
                 {{ govukSummaryList({
@@ -184,7 +192,7 @@
                                     value: { text: "No" }
                                 }
                                 ]
-                        }) 
+                        })
                         }}
 
                 {{ govukSummaryList({
@@ -193,7 +201,7 @@
                             text: "Boots"
                             }
                         },
-                        rows: 
+                        rows:
                            [
                             {
                                 key: { text: "Items" },
@@ -242,8 +250,8 @@
                                 value: { text: "£123.00" }
                             }
                             ]
-                          
-                        }) 
+
+                        })
                         }}
 
             </form>

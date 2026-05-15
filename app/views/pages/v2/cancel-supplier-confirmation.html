@@ -1,0 +1,63 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+{% endblock %}
+
+{% set otherReasonHtml %}
+{{ govukInput({
+  id: "other-reason",
+  name: "otherReason",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Please specify"
+  }
+}) }}
+{% endset -%}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          {{ govukPanel({
+            titleText: "Supplier cancelled",
+            html: "Your reference number<br><strong>HDJ2123F</strong>"
+          }) }}
+
+          <h2 class="govuk-heading-m">What to do next</h2>
+
+          <p class="govuk-body">You must now update the claimant's UC History to record the reasons why this claim has been cancelled or amended.</p>
+
+          <p class="govuk-body">
+            <a href="claim-view-cancel-supplier-cancelled" class="govuk-link">View the claim</a> or <a href="/pages/v2/index" class="govuk-link">view all claims</a>
+          </p>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

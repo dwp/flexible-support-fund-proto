@@ -1,0 +1,57 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("/") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-m">Reference HDJ2123F</span>
+            <h1 class="govuk-heading-l">Add proof of purchases</h1>
+            <p>Confirm details of all virtual payment cards and receipts presented by the customer to update the status of the claim.</p>
+
+            <h2 class="govuk-heading-m">Suppliers</h2>
+
+            {{ govukTaskList({
+
+            items: [
+                {
+                title: {
+                    text: "Argos"
+                },
+                href: "#",
+                status: {
+                    text: "Completed"
+                }
+                },
+                {
+                title: {
+                    text: "Boots"
+                },
+                href: "proof-of-purchase",
+                status: {
+                    tag: {
+                    text: "Not started",
+                    classes: "govuk-tag--blue"
+                    }
+                }
+                }
+            ]
+            }) }}
+
+        </div>
+    </div>
+{% endblock %}

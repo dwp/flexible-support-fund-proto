@@ -1,0 +1,76 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("payment") }}
+{% endblock %}
+
+{% set otherReasonHtml %}
+{{ govukInput({
+  id: "other-reason",
+  name: "otherReason",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Reason"
+  }
+}) }}
+{% endset -%}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Reason for the claim</h1>
+            <form>
+                {{ govukRadios({
+                            name: "reason",
+                            fieldset: {
+                                legend: {
+                                text: ""
+                                }
+                            },
+                            items: [
+
+                                { value: "INTERVIEW", text: "Interview" },
+                                { value: "JOB_START", text: "Job start" },
+                                { value: "WORK_TRIALS", text: "Work trials" },
+                                { value: "WORK_EXPERIENCE", text: "Work experience" },
+                                { value: "JOB_CHANGE", text: "Job change" },
+                                { value: "INCREASED_EARNINGS", text: "Increased earnings" },
+                                { value: "SELF_EMPLOYMENT_START", text: "Self-employment start" },
+                                { value: "TRAINING_COURSE", text: "Training course" },
+                                { value: "SWAP", text: "Sector-based Work Academy Programme (SWAP)" },
+                                { value: "WSEP", text: "Wales Skills to Employment Pathway (WSEP)" },
+                                { value: "JCP_APPOINTMENT", text: "Jobcentre Plus appointment" },
+                                { value: "JOB_FAIR", text: "Job fair" },
+                                { value: "JOB_SEARCH_SUPPORT", text: "Job search support" },
+                                {
+                                divider: "or"
+                                },
+                                { value: "OTHER", text: "Something else" , conditional: {
+                                    html: otherReasonHtml
+                                }
+                                }
+
+                ] }) }}
+
+                {{ govukButton({
+                        text: "Continue",
+                        href: "claim-details"
+                        }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}
