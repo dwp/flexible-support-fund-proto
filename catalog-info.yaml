@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: blank.prototype.kit
-  title: Blank-Prototype-Kit
+  name: flexible.support.fund.proto
+  title: Flexible-Support-Fund-Proto
   description: |
     A blank prototype kit version 13.18.1 with DWP Frontend installed
 
@@ -13,8 +13,8 @@ metadata:
     dwp.gov.uk/version: 1.0.0
     dwp.gov.uk/license: unknown
 
-    dwp.gov.uk/last-verified.by: Ryan Garrett
-    dwp.gov.uk/last-verified.on: 2026-04-23
+    dwp.gov.uk/last-verified.by: Ben Raine
+    dwp.gov.uk/last-verified.on: 2026-06-09
 
     dwp.gov.uk/open-source.approved: "true"
     dwp.gov.uk/open-source.location: none
