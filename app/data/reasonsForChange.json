@@ -1,0 +1,22 @@
+[
+    {
+        "value": "recently-moved",
+        "text": "Recently moved"
+    },
+    {
+        "value": "temporary-accommodation",
+        "text": "Temporary accommodation"
+    },
+    {
+        "value": "homeless",
+        "text": "Homeless"
+    },
+    {
+        "divider": "or"
+    },
+    {
+        "value": "something-else",
+        "text": "Something else",
+        "conditionalKey": "otherReason"
+    }
+]

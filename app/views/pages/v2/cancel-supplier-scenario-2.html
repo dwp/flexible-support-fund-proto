@@ -1,0 +1,95 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("cancel-claim-or-supplier") }}
+{% endblock %}
+
+{% set otherReasonHtml %}
+{{ govukInput({
+  id: "other-reason",
+  name: "otherReason",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Please specify"
+  }
+}) }}
+{% endset -%}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">
+              <span class="govuk-caption-l">Reference HDJ2123F</span>
+              Eligiblity check
+            </h1>
+
+            <p>All money spent must be accounted for before a claim or supplier can be cancelled.</p>
+
+            <p>For example, if a VCN has been created but has not been used to purchase any items.</p>
+
+            <p>However, if money has been sent to the customer or spent on purchases, we must follow the refund process.</p>
+            <form action="/submit-cancel-supplier-eligibility?v=2" method="post">
+
+                {{ govukRadios({
+                  classes: "govuk-radios--inline",
+                  name: "cancel-supplier-eligibility-check",
+fieldset: {
+            legend: {
+              text: "Have funds already been sent to the customer or spent on the associated A2B card?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: { text: 'Supplier selected: Boots'},
+                  items: [
+                    {
+                      value: "Yes",
+                      text: "Yes"
+                    },
+                    {
+                      value: "No",
+                      text: "No"
+                    }
+                  ]
+                  })
+                }}
+
+                {{ govukButton({
+                    text: "Continue",
+                    type: 'Submit'
+                  })
+                }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

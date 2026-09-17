@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Sarah Philips",
+        "nino": "QQ 12 34 56 C",
+        "dateOfBirth": "5 January 1978",
+        "address": {
+            "line1": "72 Guild Street",
+            "city": "London",
+            "postcode": "SE23 6FH"
+        }
+    }
+]

@@ -1,0 +1,28 @@
+{% extends "layouts/form-page.njk" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% set showBackLink = true %}
+{% set pageHeading = "Payment" %}
+
+
+{% block formContent %}
+    {{ govukRadios({
+                            name: "payment",
+                            value: data.payment,
+                            fieldset: {
+                                legend: {
+                                text: "Payment will be made"
+                                }
+                            },
+                            items: [
+                                {
+                                value: "IN_ADVANCE",
+                                text: "In advance"
+                                },
+                                {
+                                value: "RETROSPECTIVE",
+                                text: "Retrospectively",
+                                hint: {text: 'The customer has already purchased all of the items being claimed for and will be reimbursed through Central Payment System (CPS)'}
+                                }
+                            ]
+                            }) }}
+{% endblock %}

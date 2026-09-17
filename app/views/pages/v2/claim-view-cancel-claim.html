@@ -7,6 +7,12 @@
 
 {% from "macros/back-link.njk" import backLink %}
 
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    Scenario 2: Single supplier claim
+  </p>
+{% endset %}
+
 {% block pageTitle %}
     GOV.UK page template –
     {{ serviceName }}
@@ -20,6 +26,11 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+
+            {{ govukNotificationBanner({
+                html: html
+            }) }}
+
             <span class="govuk-caption-m">Reference HDJ2123F</span>
             <h1 class="govuk-heading-l">View claim</h1>
 

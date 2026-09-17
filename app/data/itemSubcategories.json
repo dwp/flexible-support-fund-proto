@@ -1,0 +1,59 @@
+{
+    "tools": [
+        {
+            "value": "PERSONAL_COMPUTER",
+            "text": "Personal computer",
+            "hint": {
+                "text": "such as a tablet, laptop or Chromebook"
+            }
+        },
+        {
+            "value": "MOBILE_PHONE",
+            "text": "Mobile phone"
+        },
+        {
+            "value": "OTHER_IT_EQUIPMENT",
+            "text": "Other IT equipment ",
+            "hint": {
+                "text": "including pay as you go top-ups, mobile broadband and accessories, such as memory sticks"
+            }
+        },
+        {
+            "value": "WORK_TOOLS",
+            "text": "Work tools"
+        },
+        {
+            "value": "BICYCLE",
+            "text": "Bicycle (and accessories)"
+        },
+        {
+            "value": "OTHER_EQUIPMENT",
+            "text": "Other equipment"
+        }
+    ],
+    "travel": [
+        {
+            "value": "BUS_RAIL_OR_TUBE_TICKET",
+            "text": "Bus, rail or tube ticket",
+            "hint": {
+                "text": "for a single or return journey"
+            }
+        },
+        {
+            "value": "SEASON_TICKET",
+            "text": "Season ticket"
+        },
+        {
+            "value": "TAXI",
+            "text": "Taxi"
+        },
+        {
+            "value": "CAR_OR_BIKE_RENTAL",
+            "text": "Car or bike rental"
+        },
+        {
+            "value": "FUEL",
+            "text": "Fuel"
+        }
+    ]
+}

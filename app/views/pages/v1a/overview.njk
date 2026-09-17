@@ -1,0 +1,412 @@
+{% extends "layouts/unbranded.njk" %}
+{# govuk-prototype-kit #}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+{% set submittedTag %}
+{{ govukTag({
+  text: "Submitted",
+    classes:'govuk-tag--grey'
+    }) }}
+{% endset -%}
+{% set completeTag %}
+{{ govukTag({
+  text: "Complete",
+    classes:'govuk-tag--green'
+    }) }}
+{% endset -%}
+{% set rejectedTag %}
+{{ govukTag({
+  text: "Rejected",
+    classes:'govuk-tag--red'
+    }) }}
+{% endset -%}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-m">Newcastle East Byker</span>
+      <h1 class="govuk-heading-l">Claims overview</h1>
+      <p>
+        <a href="pages/location" class="govuk-link">Change location</a>
+      </p>
+      {{ govukButton({
+        text: "Start a new claim",
+        href: "start-new-claim"
+      }) }}
+      <div class="filter">
+        <div id="filter-control" class="filterControl">
+          <p id="filtered-by-placeholder-label">No filters applied</p>
+          <p id="filtered-by-label" class='hidden'>Filtered by:
+            <strong id="filter-list"></strong>
+            <button id="clear-filter-btn" class="linkButton">Clear filters</button>
+          </p>
+          <button id="show-hide-filter-btn" data-module="govuk-button" class="govuk-button govuk-button--secondary">Hide filters</button>
+        </div>
+        <form id="filter-form" class="filterPanel hidden">
+          <div id="filter-input-container" class="filterItem">
+            <div id="customer" class="govuk-form-group">
+              <label for="customer-input" class="govuk-label" aria-hidden="false">
+                <h2 class="govuk-heading-m">Customer</h2>
+              </label>
+              <div id="customer-hint" class="govuk-hint" aria-hidden="false">
+                <p class="govuk-hint">Enter a National Insurance number or claim reference. For example, 'QQ 12 34 56 C' or 'A1BC D2EF
+                  GH'</p>
+              </div>
+              <input
+                data-testid="searchCustomer-label-nationalInsurance"
+                autocomplete="off"
+                aria-describedby="customer-hint"
+                id="customer-input"
+                class="govuk-input"
+                type="text"
+                name="customer"
+                style="max-width: 40.96ex;"></div>
+              <hr class="govuk-section-break--visible"></div>
+              <div id="filter-input-container" class="filterItem">
+                <div id="status" class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend">
+                      <h2 class="govuk-heading-m">Status</h2>
+                    </legend>
+                    <div class="govuk-checkboxes govuk-checkboxes--small">
+                      <div class="govuk-checkboxes__item">
+                        <input id="status-checkbox-0" class="govuk-checkboxes__input" type="checkbox" value="SUBMITTED" name="status">
+                          <label for="status-checkbox-0" class="govuk-label govuk-checkboxes__label" aria-hidden="false">Submitted</label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                          <input id="status-checkbox-1" class="govuk-checkboxes__input" type="checkbox" value="APPROVED" name="status">
+                            <label for="status-checkbox-1" class="govuk-label govuk-checkboxes__label" aria-hidden="false">Approved</label>
+                          </div>
+                          <div class="govuk-checkboxes__item">
+                            <input id="status-checkbox-2" class="govuk-checkboxes__input" type="checkbox" value="PAYMENT_RELEASED" name="status">
+                              <label for="status-checkbox-2" class="govuk-label govuk-checkboxes__label" aria-hidden="false">Payment released</label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                              <input id="status-checkbox-3" class="govuk-checkboxes__input" type="checkbox" value="COMPLETED" name="status">
+                                <label for="status-checkbox-3" class="govuk-label govuk-checkboxes__label" aria-hidden="false">Complete</label>
+                              </div>
+                              <div class="govuk-checkboxes__item">
+                                <input id="status-checkbox-4" class="govuk-checkboxes__input" type="checkbox" value="INCOMPLETE" name="status">
+                                  <label for="status-checkbox-4" class="govuk-label govuk-checkboxes__label" aria-hidden="false">Incomplete</label>
+                                </div>
+                                <div class="govuk-checkboxes__item">
+                                  <input id="status-checkbox-5" class="govuk-checkboxes__input" type="checkbox" value="REJECTED_CLOSED" name="status">
+                                    <label for="status-checkbox-5" class="govuk-label govuk-checkboxes__label" aria-hidden="false">Rejected</label>
+                                  </div>
+                                </div>
+                              </fieldset>
+                            </div>
+                            <hr class="govuk-section-break--visible"></div>
+                            <div id="filter-input-container" class="filterItem">
+                              <div id="createdBy" class="govuk-form-group">
+                                <label for="createdBy-input" class="govuk-label" aria-hidden="false">
+                                  <h2 class="govuk-heading-m">Submitted by</h2>
+                                </label>
+                                <select name="createdBy" autocomplete="off" class="govuk-select" id="createdBy-input" style="max-width: 40.96ex;">
+                                  <option value="">Choose user</option>
+                                  <option value="68936d9c6c3502facbfbe7ea">Grade 7 Alnwick</option>
+                                </select>
+                              </div>
+                              <hr class="govuk-section-break--visible"></div>
+                              <div id="filter-input-container" class="filterItem">
+                                <h2 class="govuk-heading-m" id="total-cost-heading">Total cost</h2>
+                                <div class="inline">
+                                  <div>
+                                    <div id="totalCostMin" class="govuk-form-group">
+                                      <label for="totalCostMin-input" class="govuk-label" aria-hidden="false">Minimum</label>
+                                      <div class="govuk-input__wrapper">
+                                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                                        <input
+                                          aria-labelledby="total-cost-heading totalCostMin-input"
+                                          autocomplete="off"
+                                          id="totalCostMin-input"
+                                          class="govuk-input"
+                                          type="text"
+                                          name="totalCostMin"
+                                          style="max-width: 12.62ex;"></div>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <div id="totalCostMax" class="govuk-form-group">
+                                        <label for="totalCostMax-input" class="govuk-label" aria-hidden="false">Maximum</label>
+                                        <div class="govuk-input__wrapper">
+                                          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                                          <input
+                                            aria-labelledby="total-cost-heading totalCostMax-input"
+                                            autocomplete="off"
+                                            id="totalCostMax-input"
+                                            class="govuk-input"
+                                            type="text"
+                                            name="totalCostMax"
+                                            style="max-width: 12.62ex;"></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <hr class="govuk-section-break--visible"></div>
+                                    <div id="filter-input-container" class="filterItem">
+                                      <h2 class="govuk-heading-m">Date</h2>
+                                      <div class="inline">
+                                        <div>
+                                          <div id="dateFrom" class="govuk-form-group">
+                                            <fieldset class="govuk-fieldset">
+                                              <legend class="govuk-fieldset__legend">
+                                                <strong>From</strong>
+                                              </legend>
+                                              <div class="govuk-date-input">
+                                                <div class="govuk-date-input__item">
+                                                  <label for="dateFrom-day" class="govuk-label" aria-hidden="false">Day</label>
+                                                  <input
+                                                    id="dateFrom-day"
+                                                    inputmode="numeric"
+                                                    autocomplete="section-appointment bday-day"
+                                                    class="govuk-input govuk-input--width-2 govuk-date-input__input"
+                                                    type="text"
+                                                    value=""
+                                                    name="dateFrom[day]"></div>
+                                                  <div class="govuk-date-input__item">
+                                                    <label for="dateFrom-month" class="govuk-label" aria-hidden="false">Month</label>
+                                                    <input
+                                                      id="dateFrom-month"
+                                                      inputmode="numeric"
+                                                      autocomplete="section-appointment bday-month"
+                                                      class="govuk-input govuk-input--width-2 govuk-date-input__input"
+                                                      type="text"
+                                                      value=""
+                                                      name="dateFrom[month]"></div>
+                                                    <div class="govuk-date-input__item">
+                                                      <label for="dateFrom-year" class="govuk-label" aria-hidden="false">Year</label>
+                                                      <input
+                                                        id="dateFrom-year"
+                                                        inputmode="numeric"
+                                                        autocomplete="section-appointment bday-year"
+                                                        class="govuk-input govuk-input--width-4 govuk-date-input__input"
+                                                        type="text"
+                                                        value=""
+                                                        name="dateFrom[year]"></div>
+                                                    </div>
+                                                  </fieldset>
+                                                </div>
+                                              </div>
+                                              <div>
+                                                <div id="dateTo" class="govuk-form-group">
+                                                  <fieldset class="govuk-fieldset">
+                                                    <legend class="govuk-fieldset__legend">
+                                                      <strong>To</strong>
+                                                    </legend>
+                                                    <div class="govuk-date-input">
+                                                      <div class="govuk-date-input__item">
+                                                        <label for="dateTo-day" class="govuk-label" aria-hidden="false">Day</label>
+                                                        <input
+                                                          id="dateTo-day"
+                                                          inputmode="numeric"
+                                                          autocomplete="section-appointment bday-day"
+                                                          class="govuk-input govuk-input--width-2 govuk-date-input__input"
+                                                          type="text"
+                                                          value=""
+                                                          name="dateTo[day]"></div>
+                                                        <div class="govuk-date-input__item">
+                                                          <label for="dateTo-month" class="govuk-label" aria-hidden="false">Month</label>
+                                                          <input
+                                                            id="dateTo-month"
+                                                            inputmode="numeric"
+                                                            autocomplete="section-appointment bday-month"
+                                                            class="govuk-input govuk-input--width-2 govuk-date-input__input"
+                                                            type="text"
+                                                            value=""
+                                                            name="dateTo[month]"></div>
+                                                          <div class="govuk-date-input__item">
+                                                            <label for="dateTo-year" class="govuk-label" aria-hidden="false">Year</label>
+                                                            <input
+                                                              id="dateTo-year"
+                                                              inputmode="numeric"
+                                                              autocomplete="section-appointment bday-year"
+                                                              class="govuk-input govuk-input--width-4 govuk-date-input__input"
+                                                              type="text"
+                                                              value=""
+                                                              name="dateTo[year]"></div>
+                                                          </div>
+                                                        </fieldset>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <button data-module="govuk-button" type="submit" id="filter-apply-button" class="govuk-button applyFilterButton">Apply
+                                                  filters</button>
+                                              </form>
+                                            </div>
+                                            <span class="govuk-caption-m">Showing 1-6 of 6</span>
+                                            {{ govukTable({
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Reference"
+    },
+    {
+      text: "Customer"
+    },
+    {
+      text: "Total cost",
+      format: "numeric"
+    },
+    {
+      text: "Date"
+    },
+    {
+      text: "Status"
+    },
+    {
+      text: "Next action"
+    }
+  ],
+  rows: [
+    [
+      {
+        html: '<a href="pages/claim-view-submitted" class="govuk-link">BSJ2123F</a>'
+      },
+      {
+        text: "Brian Smith"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "1 Jan 2025"
+      },
+      {
+        text: "Submitted"
+      },
+      {
+        text:''
+      }
+    ],
+        [
+      {
+        html: '<a href="pages/claim-view" class="govuk-link">SPJ2123F</a>'
+      },
+      {
+        text: "Sarah Philips"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "1 Jan 2025"
+      },
+      {
+        text: 'Submitted'
+      },
+      {
+        html: '<a href="pages/review" class="govuk-link">Review</a>'
+      }
+    ],
+    [
+      {
+        html: '<a href="pages/claim-view" class="govuk-link">MBJ2123F</a>'
+      },
+      {
+        text: "Michael Braddock"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "13 May 2025"
+      },
+      {
+        text: "Payment released"
+      },
+      {
+         html: '<a href="pages/proof-of-purchases" class="govuk-link">Add proof of purchases</a>'
+      }
+    ],
+        [
+      {
+        html: '<a href="pages/claim-view" class="govuk-link">JDJ2123F</a>'
+      },
+      {
+        text: "John Dobson"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "13 May 2025"
+      },
+      {
+        text: "Approved"
+      },
+      {
+         html: '<a href="pages/release-payment" class="govuk-link">Release payment</a>'
+      }
+    ],
+    [
+      {
+        html: '<a href="pages/claim-view" class="govuk-link">MDJ2123F</a>'
+      },
+      {
+        text: "Meg Davidson"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "1 Jan 2025"
+      },
+      {
+        html: completeTag
+      },{
+      text:''}
+    ],
+    [
+      {
+        html: '<a href="pages/claim-view-rejected" class="govuk-link">XGJ2123F</a>'
+      },
+      {
+        text: "Xavier Grayson"
+      },
+      {
+        text: "£97.45",
+        format: "numeric"
+      },
+      {
+        text: "12 Apr 2026"
+      },
+      {
+        html: rejectedTag
+      },{
+      text:''}
+    ]
+  ]
+}) }}
+                                            {{ govukPagination({
+              previous: {
+                href: "#"
+              },
+              next: {
+                href: "#"
+              },
+              items: [
+                {
+                  number: 1,
+                  current: true,
+                  href: "#"
+                },
+                {
+                  number: 2,
+                  href: "#"
+                },
+                {
+                  number: 3,
+                  href: "#"
+                }
+                ]
+}) }}
+                                          </div>
+                                        </div>
+                                      {% endblock %}

@@ -1,0 +1,85 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("cancel-claim-or-supplier") }}
+{% endblock %}
+
+{% set otherReasonHtml %}
+
+{{ govukInput({
+  id: "other-reason",
+  name: "otherReason",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Please specify"
+  }
+}) }}
+{% endset -%}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">
+              <span class="govuk-caption-l">Reference HDJ2123F</span>
+              Confirm claim cancellation
+            </h1>
+
+            {{ govukSummaryList({
+              rows: [
+                {
+                    key: { text: "Location" },
+                    value: { text: "Alnwick" }
+                },
+                {
+                    key: { text: "Total cost" },
+                    value: { text: "£102.99" }
+                },
+                {
+                    key: { text: "Suppliers" },
+                    value: { text: "Boots, Fenwick"}
+                },
+                {
+                    key: { text: "Reason for cancellation" },
+                    value: { text: "Agent error" }
+                },
+                {
+                    key: { text: "Cancelled by" },
+                    value: { html: '<a href="user">John Doe (HEO)</a><div>31 April 2026, 2:17pm</div>' }
+                }
+              ]
+            }) }}
+
+            <form action="/pages/cancel-claim-confirmation" method="post">
+                {{ govukWarningText({
+                  text: "Cancelling a claim cannot be undone.",
+                  iconFallbackText: "Warning"
+                }) }}
+
+
+                {{ govukButton({
+                    text: "Cancel claim",
+                    type: 'Submit',
+                    classes: 'govuk-button--warning'
+                  })
+                }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

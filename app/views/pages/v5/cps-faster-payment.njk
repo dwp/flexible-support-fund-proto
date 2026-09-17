@@ -1,0 +1,80 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("add-an-item") }}
+{% endblock %}
+
+{% set otherReasonHtml %}
+    {{ govukInput({
+    id: "other-reason",
+    name: "otherReason",
+    spellcheck: false,
+    classes: "govuk-!-width-one-third",
+    label: {
+        text: "Reason"
+    }
+    }) }}
+{% endset -%}
+
+{% set fasterPaymentReasonHtml %}
+    {{ govukSelect({
+        id: "faster-payment-reason",
+        name: "fasterPaymentReason",
+        label: {
+            text: "Reason"
+        },
+        items: [
+            {
+            value: "00000000",
+            text: "Choose a reason",
+            selected: true
+            },
+            { value: "REQUIRED_FUNDS", text: "Customer requires funds within this time period" },
+            { value: "DELAY", text: "Process delay within Job Centre" }
+        ]
+        })
+    }}
+{% endset -%}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">Metro</span>
+            <h1 class="govuk-heading-l">Faster payment reason</h1>
+            <form action="submit-payment-details", method="post">
+                {{ govukRadios({
+        id: "faster-payment-reason",
+        name: "fasterPaymentReason",
+        label: {
+            text: "Reason"
+        },
+        items: [
+            { value: "REQUIRED_FUNDS", text: "Customer requires funds within this time period" },
+            { value: "DELAY", text: "Process delay within Job Centre" }
+        ]
+        })
+    }}
+                {{ govukButton({
+                        text: "Continue",
+                        href: "suppliers"
+                        }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

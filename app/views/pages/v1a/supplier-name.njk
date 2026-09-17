@@ -1,0 +1,20 @@
+{% extends "layouts/form-page.njk" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% set showBackLink = true %}
+{% set pageHeading = "Add a supplier" %}
+{% block formContent %}
+    <p>The customer can buy multiple items from a single supplier.</p>
+    {{ govukInsetText({
+                text: "If the customer is buying items from more than one supplier, you can add another supplier to the claim after completing this section."
+                }) }}
+    <p class="govuk-body govuk-!-margin-bottom-6">For fuel claims, when the supplier is not known, enter 'No supplier'.</p>
+    {{ govukInput({
+                label: {
+                    text: "Supplier"
+                },
+                classes: "govuk-input--width-20",
+                id: "supplier",
+                name: "supplierName"
+                
+                }) }}
+{% endblock %}

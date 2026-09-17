@@ -1,0 +1,109 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+  {{ backLink("search-for-customer") }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Customer details</h1>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Sarah Philips"
+      }
+    },
+    {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: "QQ 12 34 56 C"
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: "5 January 1978"
+      }
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: "72 Guild Street<br>London<br>SE23 6FH"
+      },
+      actions: {
+        items: [
+          {
+            href: "change-address",
+            text: "Change",
+            visuallyHiddenText: "address"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<p class="govuk-body">The customer’s <strong>current address</strong> should be included in this application.</p>
+
+  <p class="govuk-body">If the customer’s address has changed from the one supplied, they will need to inform Universal Credit using a ‘Change of circumstances’ activity.</p>
+
+  <h2 class="govuk-heading-m">Change of circumstances information</h2>
+  {{ govukDetails({
+    summaryText: "Universal Credit change of circumstances",
+    text: "Work Coaches must create a task instructing the customer to update the address in their account."
+  }) }}
+  {{ govukDetails({
+    summaryText: "Customer Information System change of circumstances",
+    text: "Complete a CIS500 form to accurately align the record."
+  }) }}
+
+  <h2 class="govuk-heading-m">Verifying identity</h2>
+  {{ govukDetails({
+    summaryText: "Identity verification guidance",
+    text: "Customers must have completed an initial identity verification to be entitled to Universal Credit (UC) and their identity must be confirmed each time there is contact in person or by telephone.  Although not always necessary, customers should present their identity documents at each in-person appointment.
+    For this claim, follow the identity verification process for first appointments or if the customer can’t be recognised."
+  }) }}
+
+{{ govukCheckboxes({
+  name: "identity-verification",
+  items: [
+    {
+      value: "identity",
+      text: "The customer’s identity has been verified, in line with guidance"
+    }
+  ]
+}) }}
+
+{{ govukButton({
+  text: "Continue",
+  href: "universal-credit-details"
+}) }}
+  </div>
+</div>
+
+{% endblock %}

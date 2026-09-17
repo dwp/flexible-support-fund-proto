@@ -1,0 +1,110 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("/") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-m">Reference HDJ2123F</span>
+            <h1 class="govuk-heading-l">Boots details</h1>
+
+            <form>
+
+                {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Trainers"
+                            }
+                        },
+                        rows:
+                           [
+                            {
+                                key: { text: "Cost" },
+                                value: { text: "£65.00" }
+                            },
+                            {
+                                key: { text: "More information" },
+                                value: {
+                                text: 'This is some information manually added by the user.'
+                                }
+                            },
+                            {
+                                key: { text: "Category" },
+                                value: { text: "Clothing" }
+                            }
+                            ]
+                        })
+                        }}
+
+        
+                            {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Shirt"
+                            }
+                        },
+                        rows:
+                           [
+                            {
+                                key: { text: "Cost" },
+                                value: { text: "£15.00" }
+                            },
+                            {
+                                key: { text: "More information" },
+                                value: {
+                                text: 'This is some information manually added by the user.'
+                                }
+                            },
+                            {
+                                key: { text: "Category" },
+                                value: { text: "Clothing" }
+                            }
+                            ]
+                        })
+                        }}
+
+                            {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Trousers"
+                            }
+                        },
+                        rows:
+                           [
+                            {
+                                key: { text: "Cost" },
+                                value: { text: "£20.00" }
+                            },
+                            {
+                                key: { text: "More information" },
+                                value: {
+                                text: 'This is some information manually added by the user.'
+                                }
+                            },
+                            {
+                                key: { text: "Category" },
+                                value: { text: "Clothing" }
+                            }
+                            ]
+                        })
+                        }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

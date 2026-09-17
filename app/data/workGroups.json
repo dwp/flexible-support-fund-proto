@@ -1,0 +1,22 @@
+[
+    {
+        "value": "intensive-work-search",
+        "text": "Intensive work search"
+    },
+    {
+        "value": "work-preparation",
+        "text": "Work preparation"
+    },
+    {
+        "value": "work-focused-interview",
+        "text": "Work focused interview"
+    },
+    {
+        "value": "no-work-related-requirements",
+        "text": "No work related requirements"
+    },
+    {
+        "value": "light-touch",
+        "text": "Light touch"
+    }
+]

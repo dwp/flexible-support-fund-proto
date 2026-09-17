@@ -1,0 +1,83 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("cancel-claim-or-supplier") }}
+{% endblock %}
+
+{% set otherReasonHtml %}
+{{ govukInput({
+  id: "other-reason",
+  name: "otherReason",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Please specify"
+  }
+}) }}
+{% endset -%}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">
+              <span class="govuk-caption-l">Reference HDJ2123F</span>
+              Has any money been spent?
+            </h1>
+
+            <form action="/submit-cancel-supplier-a2b-funds?v=2" method="post">
+
+                {{ govukRadios({
+                  classes: "govuk-radios--inline",
+                  name: "cancel-supplier-funds-check",
+
+                  items: [
+                    {
+                      value: "Yes",
+                      text: "Yes"
+                    },
+                    {
+                      value: "No",
+                      text: "No"
+                    }
+                  ]
+                  })
+                }}
+
+                {{ govukButton({
+                    text: "Continue",
+                    type: 'Submit'
+                  })
+                }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

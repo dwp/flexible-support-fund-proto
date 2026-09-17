@@ -1,0 +1,53 @@
+{% extends "layouts/form-page.njk" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "macros/radios.njk" import radios %}
+{% set showBackLink = true %}
+{% set pageHeading = "Item details" %}
+{% block formContent %}
+    {{ govukInput({
+                    label: {
+                        text: "Item name"
+                    },
+                    id: "item-name",
+                    name: "itemName",
+                        value:item.name,
+                    classes: "govuk-input--width-20"
+                
+                    }) }}
+    {{ govukInput({
+                    id: "cost",
+                    name: "itemCost",
+                        value:item.cost,
+                    label: {
+                        text: "Item cost"
+                    },
+                    hint:{
+                        text:'Include pounds and pence, like 123.45 or 156.00'
+                    },
+                    prefix: {
+                        text: "£"
+                    },
+                    classes: "govuk-input--width-5",
+                    spellcheck: false
+                    }) }}
+    <h2 class="govuk-heading-m">Additional item information</h2>
+    <p>Include any information that supports the claim or explains costs, such as:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>product codes, where possible</li>
+        <li>locations for departure and arrival on travel costs</li>
+        <li>distance covered in miles for fuel costs</li>
+        <li>reasons for the purchase of non-standard, high-specification or high-cost items</li>
+    </ul>
+    {{ govukTextarea({
+                    name: "moreInformation",
+                    value: item.moreInformation,
+                    id: "more-information",
+                    label: {
+                        text: "Additional item information",
+                        classes: "govuk-fieldset__legend",
+                        isPageHeading: false
+                    }
+
+                            }) }}
+{% endblock %}

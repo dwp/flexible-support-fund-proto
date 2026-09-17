@@ -1,0 +1,32 @@
+{% extends "layouts/form-page.njk" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "macros/radios.njk" import radios %}
+{% set showBackLink = true %}
+{% set pageHeading = "Reason for the claim" %}
+{% set otherReasonHtml %}
+{{ govukInput({
+  id: "other-reason",
+  name: "somethingElseReason",
+  value: data.somethingElseReason,
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Reason"
+  }
+}) }}
+{% endset %}
+{% block formContent %}
+    {{ govukRadios({
+        name: "reason",
+        fieldset: {
+            legend: {
+            text: ""
+            }
+        },
+        value: data.reason,
+        items:  data.static.reasons
+
+                
+                 }) }}
+{% endblock %}

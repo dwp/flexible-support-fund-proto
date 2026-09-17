@@ -1,0 +1,10 @@
+{% macro pageWrapper(title) %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">
+                {{ title }}
+            </h1>
+            {{ caller() }}
+        </div>
+    </div>
+{% endmacro %}

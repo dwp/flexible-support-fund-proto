@@ -1,0 +1,27 @@
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% macro radios(name, legend, items, conditionals) %}
+    {% set renderedItems = [] %}
+    {% for item in items %}
+        {% if item.conditionalKey %}
+            {% set renderedItems = (renderedItems or []) + [{
+        value: item.value,
+        text: item.text,
+        conditional: {
+          html: conditionals[item.conditionalKey]
+        }
+      }] %}
+        {% else %}
+            {% set renderedItems = (renderedItems or []) + [item] %}
+        {% endif %}
+    {% endfor %}
+    {{ govukRadios({
+    name: name,
+    value: data[name],
+    fieldset: {
+      legend: {
+        text: legend
+      }
+    },
+    items: renderedItems
+  }) }}
+{% endmacro %}

@@ -1,0 +1,68 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("add-an-item") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">{{data['supplier-name']}}</span>
+            <h1 class="govuk-heading-l">Tools and equipment</h1>
+            <form action="/submit-item-subcategory" method="post">
+
+                {{ govukRadios({
+                    name: "item-subcategory",
+                    items: [
+                                {
+                                    value: "PERSONAL_COMPUTER",
+                                    text: "Personal computer",
+                                     hint:{text:"such as a tablet, laptop or Chromebook"}
+                                },
+                                {
+                                    value: "MOBILE_PHONE",
+                                    text: "Mobile phone"
+                                },
+                                {
+                                    value: "OTHER_IT_EQUIPMENT",
+                                    text: "Other IT equipment ",
+                                    hint:{text:"including pay as you go top-ups, mobile broadband and accessories, such as memory sticks"}
+                                },
+                                {
+                                    value: "WORK_TOOLS",
+                                    text: "Work tools"
+                                },
+                                {
+                                    value: "BICYCLE",
+                                    text: "Bicycle (and accessories)"
+                                },
+                                {
+                                    value: "OTHER_EQUIPMENT",
+                                    text: "Other equipment"
+                                }
+                                ]
+                
+                    }) 
+                }}
+
+                {{ govukButton({
+                        text: "Continue",
+                        type: "submit"
+                        }) 
+                }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

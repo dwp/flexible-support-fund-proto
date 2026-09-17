@@ -1,0 +1,87 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("claim-review") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Submit the claim</h1>
+            <form>
+
+                {{ govukCheckboxes({
+                        name: "customerDeclaration",
+                        fieldset: {
+                            legend: {
+                            text: "Share this declaration with the customer and make sure they agree with all statements that apply",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                            }
+                        },
+                        items: [
+                            {
+                            value: "customerDeclaration",
+                            text: "Sarah Philips agrees that:"
+                            }
+                        ]
+                        }) }}
+
+                <div class="govuk-inset-text">
+                    <ul class="govuk-list--short">
+                        <li>all the information included on this claim is correct</li>
+                        <li>they have given the correct reason for usage for the costs and items included</li>
+                        <li>the costs included are the expected price of the item(s)</li>
+                        <li>they have not made, and will not make, any other claim for the same journey, cost or items</li>
+                        <li>they will tell Jobcentre Plus straight away if they do not use the award for its intended purpose (e.g. do not make a journey or use an item)</li>
+                        <li>if awards are related to a training course, they will tell Jobcentre Plus straight away if they leave their course or do not attend for any reason</li>
+                        <li>they will tell Jobcentre Plus straight away about any change in their circumstances</li>
+                        <li>if a payment is made in advance of purchase, they will provide proof of purchase by the date requested by their work coach (usually within 14 days of payment)</li>
+                        <li>they will pay back any award that is not used for the reason stated on this claim</li>
+                        <li>they will let their work coach know immediately if any items are returned, replaced, faulty or they did not receive them</li>
+                        <li>they understand the DWP holds personal information about them and they consent to the use of that data</li>
+                    </ul>
+                </div>
+
+                {{ govukDetails({
+                    summaryText: "Why DWP needs personal information and how we treat it",
+                    text: "We treat personal information carefully. We may use it for any of our purposes. To learn more about information rights and how we use information, please see our DWP Personal Information Charter."
+                    }) }}
+
+                {{ govukCheckboxes({
+                        name: "workCoachDeclaration",
+                        fieldset: {
+                            legend: {
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                            }
+                        },
+                        items: [
+                            {
+                            value: "workCoachDeclaration",
+                            text: "I have checked the Flexible Support Fund guidelines and confirm this claim meets the requirements"
+                            }
+                        ]
+                        }) }}
+
+                {{ govukButton({
+                        text: "Continue",
+                        href: "status"
+                        }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

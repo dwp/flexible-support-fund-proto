@@ -1,0 +1,159 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("add-a-virtual-payment-card") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-m">Reference HDJ2123F</span>
+            <h1 class="govuk-heading-l">Proof of purchases for Boots</h1>
+
+            {{ govukSummaryList({
+                    rows: [
+                    {
+                    key: {
+                        text: "Items"
+                    },
+                    value: {
+                        text: "Shoes"
+                    }
+                    },
+                      {
+                    key: {
+                        text: "Supplier total"
+                    },
+                    value: {
+                        text: "£33.00"
+                    }
+                    }
+                ]
+            }) }}
+
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">More supplier details</span></summary>
+                <div class="govuk-details__text">
+                    {{ govukSummaryList({
+                    rows: [
+                    {
+                    key: {
+                        text: "Cost"
+                    },
+                    value: {
+                        text: "£100.00"
+                    }
+                    },
+                      {
+                    key: {
+                        text: "More information"
+                    },
+                    value: {
+                        text: "Required for role"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Additional costs"
+                    },
+                    value: {
+                        text: "£2.99"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Payment method"
+                    },
+                    value: {
+                        text: "Approval to Buy (A2B)"
+                    }
+                    }
+
+                ]
+            }) }}
+                </div>
+            </details>
+
+            <form>
+
+                {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Virtual payment card"
+                            },
+                            actions: {
+                                items: [
+                                {
+                                    href: "#",
+                                    text: "Delete"
+                                },
+                                {
+                                    href: "#",
+                                    text: "Change"
+                                }
+                                ]
+                            }
+                        },
+                        rows: [
+                            {
+                            key: {
+                                text: "Card number"
+                            },
+                            value: {
+                                text: "•••• •••• •••• 1111"
+                            }
+                            },
+                            {
+                             key: {
+                                text: "Total cost on card"
+                            },
+                            value: {
+                                html: "£22.00"
+                            }
+                            },
+                            {
+                             key: {
+                                text: "Added by"
+                            },
+                            value: {
+                                html: '
+                                <div>John Doe</div>
+                                <div>16 April 2026, 10:21am</div>
+                                </>'
+                            }
+                            }
+                        ]
+                        }) }}
+
+                {{ govukButton({
+                            text: "Add an item",
+                            href: 'add-an-item',
+                            classes: "govuk-button--secondary"
+                            }) }}
+
+                <p>Proof of purchases will be confirmed. You will not be able to make further changes to this supplier.</p>
+
+                {{ govukButton({
+                        text: "Confirm",
+                        href: "proof-of-purchase-success"
+                        }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

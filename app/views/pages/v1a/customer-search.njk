@@ -1,0 +1,17 @@
+{% extends "layouts/form-page.njk" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% set showBackLink = true %}
+{% set pageHeading = "Search for a customer" %}
+{% block formContent %}
+    {{ govukInput({
+    label: {
+    text: "National Insurance number"
+    },
+    hint: {
+    text: "Available in Universal Credit. For example, QQ 12 34 56 C"
+    },
+    classes: "govuk-input--width-20",
+    id: "event-name",
+    name: "nino"
+    }) }}
+{% endblock %}

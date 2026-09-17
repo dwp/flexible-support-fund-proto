@@ -4,3 +4,55 @@
 // 
 
 // Add extra styles here
+$govuk-border: #cecece;
+$govuk-focus: #ffdd00;
+$govuk-text: #0b0c0c;
+$govuk-link: #1a65a6;
+
+.filter {
+
+    outline: 1px solid $govuk-border;
+    margin-bottom: 15px;
+
+    .filterControl {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        outline: 1px solid $govuk-border;
+        height: 40px;
+        padding: 15px;
+
+        .linkButton {
+            all: unset;
+            color: $govuk-link;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-left: 15px;
+
+            &:focus {
+                background-color: $govuk-focus;
+                color: $govuk-text;
+                text-decoration-thickness: 3px;
+                text-underline-offset: 0.1578em;
+            }
+        }
+    }
+}
+
+.filterPanel {
+    padding: 0 15px;
+
+    .filterItem {
+        padding-top: 20px;
+        padding-bottom: 15px;
+
+        .inline {
+            display: flex;
+            gap: 15px;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}

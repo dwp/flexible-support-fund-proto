@@ -1,0 +1,110 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("claim-view") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-m">Reference HDJ2123F</span>
+            <h1 class="govuk-heading-l">Claim notes and messages</h1>
+
+            {{ govukTextarea({
+                    name: "history-note",
+                    id: "history-note",
+                    label: {
+                        text: "History note",
+                        classes: "govuk-label--m",
+                        isPageHeading: true
+                    },
+                    hint: {
+                        text: "Copy this text to add a Universal Credit history note."
+                    },
+                    rows:20,
+                    value: 'FSF Application Summary
+
+- FSF Application ID: 5EAOSE5NXJ
+- FSF Award Date: 14/04/2026
+- Type of FSF Award: FSF1 - Barriers to Work
+- Reason for the award: Something else
+
+- Item category: Something else
+- Amount awarded: £33.00
+
+FSF Application Breakdown (per supplier)
+
+- Supplier: Boots
+        - Item(s): shoes
+        - Boots Total cost: £33.00
+        - Receipt Required: No - A2B'
+                    }) }}
+
+            {{ govukButton({
+                    text: "Copy text",
+                    classes: "govuk-button--secondary"
+                    }) }}
+
+            {{ govukTextarea({
+                    name: "journal-message",
+                    id: "journal-message",
+                    label: {
+                        text: "Journal message",
+                        classes: "govuk-label--m",
+                        isPageHeading: true
+                    },
+                    hint: {
+                        text: "Copy this text to add a Universal Credit journal message."
+                    },
+                    rows: 20,
+                    value: 'Following our discussion about the Flexible Support Fund we agreed to your request for funding. 
+
+We have agreed to award you £33.00 from the Flexible Support Fund for the purchase of the items listed below. 
+
+During our conversation, you confirmed that all the information you gave us is correct. You also agreed: 
+
+- not to make another claim for the same thing(s)
+- to pay any money back if you no longer need it or what you were buying with it
+- that you will pay back any money you do not use as intended
+- to tell us straight away if your circumstances change
+
+FSF Application Summary
+
+- FSF Application ID: 5EAOSE5NXJ
+- FSF Award Date: 14/04/2026
+- Type of FSF Award: FSF1 - Barriers to Work
+- Reason for the award: Something else
+
+- Item category: Something else
+- Amount awarded: £33.00
+
+FSF Application Breakdown (per supplier)
+
+ - Supplier: Boots
+        - Item(s): shoes
+        - Boots Total cost: £33.00
+        - Receipt Required: No - A2B'
+                    }) }}
+
+            {{ govukButton({
+                    text: "Copy text",
+                    classes: "govuk-button--secondary"
+                    }) }}
+
+        </div>
+    </div>
+{% endblock %}

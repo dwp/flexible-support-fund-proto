@@ -1,0 +1,21 @@
+{% extends "layouts/form-page.njk" %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% set showBackLink = true %}
+{% set pageHeading = "Customer details" %}
+{% block formContent %}
+  {{ govukSelect({
+            id: "location",
+            name: "location",
+            label: {
+              text: "Choose location"
+            },
+            value: data.location,
+            items: data.static.locations
+        }) }}
+  <p class="govuk-body">The Jobcentre Plus you have selected will be responsible for this Flexible Support Fund claim.</p>
+  {{ govukWarningText({
+text: "You will not be able to change the location after submitting the claim.",
+iconFallbackText: "Warning"
+}) }}
+{% endblock %}

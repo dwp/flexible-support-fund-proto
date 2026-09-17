@@ -1,0 +1,29 @@
+{% extends "layouts/form-page.njk" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% set showBackLink = true %}
+{% set pageHeading = "Universal Credit details" %}
+{% block formContent %}
+  {{ govukInput({
+      label: {
+        text: "Claimant ID"
+      },
+      hint: {
+        text: "You can copy this information from Universal Credit, claimant details: it's 32 characters long"
+      },
+      id: "claimant-id",
+      name: "claimantId",
+      value: data.claimantId
+    }) }}
+  {{ govukRadios({
+      name: "workGroup",
+      value: data.workGroup,
+      fieldset: {
+        legend: {
+          text: "Work group"
+        }
+      },
+      items: data.static.workGroups
+    }) }}
+{% endblock %}

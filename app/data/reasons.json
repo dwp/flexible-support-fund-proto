@@ -1,0 +1,61 @@
+[
+    {
+        "value": "interview",
+        "text": "Interview"
+    },
+    {
+        "value": "job-start",
+        "text": "Job start"
+    },
+    {
+        "value": "work-trials",
+        "text": "Work trials"
+    },
+    {
+        "value": "WORK_EXPERIENCE",
+        "text": "Work experience"
+    },
+    {
+        "value": "JOB_CHANGE",
+        "text": "Job change"
+    },
+    {
+        "value": "INCREASED_EARNINGS",
+        "text": "Increased earnings"
+    },
+    {
+        "value": "SELF_EMPLOYMENT_START",
+        "text": "Self-employment start"
+    },
+    {
+        "value": "TRAINING_COURSE",
+        "text": "Training course"
+    },
+    {
+        "value": "swap",
+        "text": "Sector-based Work Academy Programme (SWAP)"
+    },
+    {
+        "value": "wsep",
+        "text": "Wales Skills to Employment Pathway (WSEP)"
+    },
+    {
+        "value": "jcp-appointment",
+        "text": "Jobcentre Plus appointment"
+    },
+    {
+        "value": "job-fair",
+        "text": "Job fair"
+    },
+    {
+        "value": "JOB_SEARCH_SUPPORT",
+        "text": "Job search support"
+    },
+    {
+        "divider": "or"
+    },
+    {
+        "value": "somethingElseReason",
+        "text": "Something else"
+    }
+]

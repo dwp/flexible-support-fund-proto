@@ -1,0 +1,106 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("add-an-item") }}
+{% endblock %}
+
+{% set otherReasonHtml %}
+    {{ govukInput({
+    id: "other-reason",
+    name: "otherReason",
+    spellcheck: false,
+    classes: "govuk-!-width-one-third",
+    label: {
+        text: "Reason"
+    }
+    }) }}
+{% endset -%}
+
+{% set fasterPaymentReasonHtml %}
+    {{ govukSelect({
+        id: "faster-payment-reason",
+        name: "fasterPaymentReason",
+        label: {
+            text: "Reason"
+        },
+        items: [
+            {
+            value: "00000000",
+            text: "Choose a reason",
+            selected: true
+            },
+            { value: "REQUIRED_FUNDS", text: "Customer requires funds within this time period" },
+            { value: "DELAY", text: "Process delay within Job Centre" }
+        ]
+        })
+    }}
+{% endset -%}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">Metro</span>
+            <h1 class="govuk-heading-l">Payment details</h1>
+            <form action="submit-payment-details", method="post">
+                {{ govukSelect({
+                    id: "accountCode",
+                    name: "accountCode",
+                    label: {
+                        text: "Account code"
+                    },
+                    items: [
+                        {
+                        value: "00000000",
+                        text: "Choose a code",
+                        selected: true
+                        },
+                        { value: "11111111", text: "11111111" },
+                        { value: "22222222", text: "22222222" },
+                        { value: "33333333", text: "33333333" },
+                        { value: "44444444", text: "44444444" },
+                        { value: "55555555", text: "55555555" },
+                        { value: "66666666", text: "66666666" },
+                        { value: "77777777", text: "77777777" },
+                        { value: "88888888", text: "88888888" },
+                        { value: "99999999", text: "99999999" }
+                    ]
+                    })
+                }}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    name: "fasterPayment",
+                    fieldset: {
+                        legend: {
+                        text: "Do you need to request a faster payment?",
+                        classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        { value: "YES_FASTER_PAYMENT", text: "Yes" },
+                        { value: "NO_FASTER_PAYMENT", text: "No"}
+                        ]
+                    }) }}
+                {{ govukButton({
+                        text: "Continue",
+                        href: "cps-faster-payment"
+                        }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{# govuk-prototype-kit #}
+{% extends "govuk-prototype-kit/layouts/unbranded.njk" %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{# @dwp #}
+{% from "internal-service-header/macro.njk" import dwpHeader %}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+{% block pageTitle %}
+    GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+    {{ dwpHeader({
+        serviceName: "Flexible Support Fund",
+        serviceHref: "/",
+        action: "Sign out",
+        actionHref: "#",
+        container: true
+        }) }}
+    {{ govukPhaseBanner({
+    tag: {
+      text: "Proto"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% endblock %}
+
+{% block beforeContent %}
+    {% if showBackLink %}
+        {% include "_includes/back-link.njk" %}
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {{ dwpFooter({
+        meta: {
+        visuallyHiddenTitle: "About this website",
+            items: [
+            {
+                href: "",
+                text: "Accessibility statement"
+                },
+        {
+            href: "",
+            text: "Privacy"
+            }
+            ]
+            }
+        }) }}
+{% endblock %}

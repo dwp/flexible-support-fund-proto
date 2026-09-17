@@ -1,0 +1,48 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("cancel-supplier-a2b-return-funds") }}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+              This supplier is not eligible for cancellation
+            </h1>
+
+          <p class="govuk-body">Based on your answers, this supplier is not eligible to be cancelled. Please follow the <a href="#">guidance</a>.</p>
+
+          <a class="govuk-body" href="/pages/v2/claim-view-cancel-supplier-a2b-payment-released">Return to claim</a>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

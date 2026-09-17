@@ -1,0 +1,234 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("/") }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Review the claim</h1>
+
+            {{ govukSummaryList({
+                    card: {
+                        title: {
+                        text: "Location"
+                        }
+                    },
+                    rows: [
+                                {
+                                key: { text: "Jobcentre plus" },
+                                value: { text: "Alnwick" },
+                                    actions: {
+                                    items: [
+                                        {
+                                            href: "location",
+                                            text: "Change"
+                                        }
+                                    ]
+                        }
+                            }
+                    ]
+                    }) 
+                    }}
+
+            {{ govukSummaryList({
+                card: {
+                    title: {
+                    text: "Customer detials"
+                    }
+                },
+                rows: [
+                    {
+                    key: {
+                        text: "Name"
+                    },
+                    value: {
+                        text: "Sarah Philips"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "National Insurance number"
+                    },
+                    value: {
+                        text: "QQ 12 34 56 C"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Date of birth"
+                    },
+                    value: {
+                        text: "5 January 1978"
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Address"
+                    },
+                    value: {
+                        html: "72 Guild Street<br>London<br>SE23 6FH"
+                    },
+                    actions: {
+                        items: [
+                        {
+                            href: "change-address",
+                            text: "Change"
+                        }
+                        ]
+                    }
+                    },
+                    {
+                    key: {
+                        text: "Identity"
+                    },
+                    value: {
+                        text: "Verified"
+                    }
+                    }
+                ]
+                }) 
+                }}
+
+            {{ govukSummaryList({
+                card: {
+                    title: {
+                    text: "Universal credit details"
+                    },   actions: {
+                            items: [
+                            {
+                                href: "universal-credit-details",
+                                text: "Change"
+                            }
+                            ]
+                        }
+                },
+                rows: [
+
+                        {
+                            key: { text: "Claimant ID" },
+                            value: { text: "f6f0bdf2-7b95-4201-a9a4-298a6baea069" }
+                        },
+                        {
+                            key: { text: "Work group" },
+                            value: { text: "Intensive work search" }
+                        }
+
+                ]
+                }) 
+                }}
+
+            {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Payment"
+                            },
+                              actions: {
+                                    items: [
+                                    {
+                                        href: "payment",
+                                        text: "Change"
+                                    }
+                                    ]
+                                }
+                        },
+                        rows: [
+
+                            {
+                                key: { text: "Payment made" },
+                                value: { text: "In advance" }
+                            }
+
+                        ]
+                        }) 
+                        }}
+
+            {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Claim details"
+                            },   actions: {
+                                    items: [
+                                    {
+                                        href: "claim-details",
+                                        text: "Change"
+                                    }
+                                    ]
+                                }
+                        },
+                        rows: [
+                                {
+                                    key: { text: "Reason for claim" },
+                                    value: { text: "Something else" }
+                                },
+                                {
+                                    key: { text: "Date" },
+                                    value: { text: "12 December 2024" }
+                                },
+                                {
+                                    key: { text: "More information" },
+                                    value: { text: "Required to drill holes" }
+                                },
+                                {
+                                    key: { text: "Supporting evidence" },
+                                    value: { text: "Confirmation message from employer" }
+                                },
+                                {
+                                    key: { text: "Rapid Response Service" },
+                                    value: { text: "No" }
+                                }
+                                ]
+                        }) 
+                        }}
+
+            {{ govukSummaryList({
+                        card: {
+                            title: {
+                            text: "Suppliers and items"
+                            },   actions: {
+                                    items: [
+                                    {
+                                        href: "suppliers",
+                                        text: "Change"
+                                    }
+                                    ]
+                                }
+                        },
+                        rows: 
+                        [
+                            {
+                                key: { text: "Boots Items" },
+                                value: { text: "Shoes" }
+                            },
+                            {
+                                key: { text: "Supplier total" },
+                                value: { text: "£33.00" }
+                            },
+                            {
+                                key: { text: "Total cost of claim" },
+                                value: { text: "£33.00" }
+                            }
+]
+                        }) 
+                        }}
+
+            {{ govukButton({
+                        text: "Continue",
+                        href: "claim-submit"
+                        }) }}
+        </div>
+    </div>
+{% endblock %}

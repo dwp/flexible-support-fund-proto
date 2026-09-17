@@ -1,0 +1,99 @@
+{% extends "layouts/form-page.njk" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "macros/radios.njk" import radios %}
+{% set showBackLink = true %}
+{% set pageHeading = "Claim details" %}
+
+{% block formContent %}
+
+                <legend class="govuk-fieldset__legend">Date</legend>
+
+                {{ govukDateInput({
+                                id: "date",
+                                name:"claimDate",
+                                fieldset: {
+                                    legend: {
+                                    text: "",
+                                    isPageHeading: true,
+                                    classes: "govuk-fieldset__legend--l"
+                                    }
+                                },
+                                value:data.claimDate,
+                                hint: {
+                                    text: "The start of a course or job or the date of an appointment. For example, 27 3 2025"
+                            }
+                    }) }}
+
+                <h2 class="govuk-heading-m">Additional claim information</h2>
+
+                <p>Include any information that supports the claim, such as:</p>
+                <ul class="govuk-body">
+                    <li>employer details for interviews, work trials or work experience</li>
+                    <li>employer details when the customer is starting a new job, or has experienced job changes or increased earnings</li>
+                    <li>course details for training such as Sector-based Work Academy (SWAP) or Wales Skills to Employment Pathway (WSEP) claims</li>
+                    <li>any other appointment details and notes</li>
+                </ul>
+
+                {{ govukTextarea({
+                            name: "moreInformation",
+                            value: data.moreInformation,
+                            label: {
+                                text: "Additional claim information",
+                                classes: "govuk-fieldset__legend",
+                                isPageHeading: false
+                            }
+
+                            }) 
+                            }}
+
+                {{ govukRadios({
+                            name: "supportingEvidence",
+                            value: data.supportingEvidence,
+                            fieldset: {
+                                legend: {
+                                text: "Supporting evidence"
+                                }
+                            },
+                            items: [
+                                { value: "CONFIRMATION_MESSAGE_FROM_EMPLOYER", text: "Confirmation message from employer" },
+                                { value: "WORK_COACH_REFERRAL", text: "Work Coach referral" },
+                                { value: "WORK_COACH_BOOKED_APPOINTMENT", text: "Work Coach booked appointment" },
+                                { value: "ATTENDANCE_AGREED_BY_WORK_COACH", text: "Attendance agreed by Work Coach" },
+                                { value: "SELF_EMPLOYMENT_BUSINESS_PLAN", text: "Self employment business plan or projections" },
+                                    {
+                                divider: "or"
+                                },
+                                { value: "NOT_REQUIRED", text: "Not required" }
+]
+                            }) }}
+
+                {{ govukRadios({
+                                classes: "govuk-radios--inline",
+                                name: "isRapidResponse",
+                                value: isRapidResponse,
+                                fieldset: {
+                                    legend: {
+                                    text: "Is the customer currently using the rapid response service?",
+                                    isPageHeading: false
+                                    }
+                                },
+                                items: [
+                                    {
+                                    value: "yes",
+                                    text: "Yes"
+                                    },
+                                    {
+                                    value: "no",
+                                    text: "No"
+                                    }
+                                ]
+                                }) }}
+
+                {{ govukDetails({
+                            summaryText: "Rapid Response Service (RRS)",
+                            text: "The Rapid Response Service helps workers and employers by giving those facing redundancy access to the services of Jobcentre Plus and its partners before they lose their jobs.\n
+                                    The support available through the Rapid Response Service is not just about Jobcentre Plus services - where appropriate other partners, such as the LSC, the devolved administrations, Local Authorities and Regional Development Agencies will be involved to provide a package of support to those affected."
+                            }) }}
+
+{% endblock %}

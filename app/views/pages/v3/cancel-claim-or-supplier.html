@@ -1,0 +1,60 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block backLink %}
+    {{ backLink("claim-view-cancel-claim-or-supplier") }}
+{% endblock %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">
+              <span class="govuk-caption-l">Reference HDJ2123F</span>
+              Do you want to cancel a claim or a supplier?
+            </h1>
+
+            <form action="/submit-cancel-claim-or-supplier" method="post">
+                <p>You may choose to cancel the whole claim or a supplier.</p>
+                {{ govukInsetText({
+                  text: "If you need to cancel only part of a supplier purchase (an individual item) first release the payment of then refund the difference. "
+                }) }}
+
+                {{ govukRadios({
+                  classes: "govuk-radios",
+                  name: "claim-or-supplier",
+
+                  items: [
+                    {
+                      value: "claim",
+                      text: "Cancel the entire claim"
+                    },
+                    {
+                      value: "supplier",
+                      text: "Cancel a supplier"
+                    }
+                  ]
+                  })
+                }}
+
+                {{ govukButton({
+                    text: "Continue",
+                    type: 'Submit'
+                  })
+                }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

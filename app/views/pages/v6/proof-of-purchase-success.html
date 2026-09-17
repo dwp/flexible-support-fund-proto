@@ -1,0 +1,71 @@
+{% extends "layouts/unbranded.html" %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{% from "macros/back-link.njk" import backLink %}
+
+{% block pageTitle %}
+    GOV.UK page template –
+    {{ serviceName }}
+    – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block backLink %}
+    {{ backLink("proof-of-purchase-list") }}
+{% endblock %}
+
+{% set html %}
+<h3 class="govuk-notification-banner__heading">
+    HDJ2123F has been updated
+</h3>
+<p class="govuk-body">
+    <a class="govuk-notification-banner__link" href="#">View the claim</a>
+    to see its status and other details.</p>
+{% endset %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {{ govukNotificationBanner({
+            html: html,
+            type: "success"
+            }) }}
+
+            <span class="govuk-caption-l">Reference HDJ2123F</span>
+            <h1 class="govuk-heading-l">Add proof of purchases</h1>
+
+            <p>Confirm details of all virtual payment cards and receipts presented by the customer to update the status of the claim.</p>
+
+            <h2 class="govuk-heading-m">Suppliers</h2>
+
+            {{ govukTaskList({
+
+            items: [
+                {
+                title: {
+                    text: "Boots"
+                },
+                href: "proof-of-purchase",
+                status: {
+                    tag: {
+                    text: "Confirmed"
+                    }
+                }
+                }
+            ]
+            }) }}
+
+            {{ govukButton({
+                text: "View all claims",
+                href: 'index',
+                classes: "govuk-button--secondary"
+                }) }}
+        </div>
+    </div>
+{% endblock %}
